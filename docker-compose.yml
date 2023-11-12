@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  search:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.7.0
+    volumes:
+      - data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+  # web:
+  #   build: .
+  #   restart: always
+  #   ports:
+  #     - '5002:5002'
+  #   depends_on:
+  #     - search
+
+volumes:
+  data:
