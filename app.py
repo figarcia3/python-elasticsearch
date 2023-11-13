@@ -1,9 +1,15 @@
-from flask import Flask, request, jsonify
-
-import json
-
-import logging
 from elasticsearch import Elasticsearch
+from elasticsearch.helpers import bulk
+
+from flask import (
+    Flask,
+    request,
+    jsonify
+)
+
+import pandas as pd
+import logging
+
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -21,7 +27,8 @@ def hello_world():
 @app.route("/index", methods=['POST', 'GET'])
 def list_index():
     if request.method == 'GET':
-        return jsonify(es.indices.get_alias("*")), 200
+        result = es.indices.get_alias(index="*")
+        return jsonify(result.body), 200
     if request.method == 'POST':
         body = request.get_json()
         es.indices.create(index=body["name"], mappings=body["mappings"])
@@ -51,6 +58,83 @@ def document_index(index_name, id):
         return jsonify(), 204
     if request.method == 'GET':
         response = es.get(index=index_name, id=id)
+        return jsonify(response.body), 200
+    return jsonify(), 400
+
+
+@app.route("/index/<string:index_name>/bulk-update", methods=['POST'])
+def bulk_update(index_name):
+    df = pd.read_csv("data/sample_products.csv")
+
+    bulk_data = []
+    for _i, row in df.iterrows():
+        print(f"Adding {row['id']}")
+        bulk_data.append(
+            {
+                "_index": index_name,
+                "_id": row["id"],
+                "_source": {
+                    "name": row["name"],
+                    "variety": row["variety"],
+                    "brand": row["brand"],
+                    "size": row["size"],
+                    "unit": row["unit"],
+                    "class": row["class"],
+                }
+            }
+        )
+
+    bulk(es, bulk_data)
+    return jsonify(), 200
+
+
+@app.route("/index/<string:index_name>/search", methods=['POST', 'GET'])
+def search(index_name):
+    if request.method == 'POST':
+        query = request.get_json()
+        response = es.search(index=index_name, body=query)
+        return jsonify(response.body), 200
+    if request.method == 'GET':
+        search_term = request.args.get('q')
+        query = {
+            "query": {
+                "function_score": {
+                    "query": {
+                        "bool": {
+                            "should": [
+                                {"match": {"name": {"query": search_term, "boost": 1.3}}},
+                                {"match": {"brand": {"query": search_term, "boost": 1.3}}},
+                                {"match": {"variety": {"query": search_term, "boost": 1}}},
+                                {"match": {"size": {"query": search_term, "boost": 1}}},
+                                {"match": {"unit": {"query": search_term, "boost": 1}}}
+                            ]
+                        }
+                    },
+                    "boost": "5",
+                    "functions": [
+                        {
+                            "filter": {"match": {"class": "W"}},
+                            "weight": 1.2
+                        },
+                        {
+                            "filter": {"match": {"class": "V"}},
+                            "weight": 1.2
+                        },
+                        {
+                            "filter": {"match": {"category": "U"}},
+                            "weight": 1
+                        },
+                        {
+                            "filter": {"match": {"category": "C"}},
+                            "weight": 1
+                        }
+                    ],
+                    "score_mode": "max",
+                    "boost_mode": "multiply"
+                }
+            }
+        }
+        response = es.search(index=index_name, body=query)
         return jsonify(response.body), 200
     return jsonify(), 400
 
