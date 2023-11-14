@@ -31,7 +31,8 @@ def list_index():
         return jsonify(result.body), 200
     if request.method == 'POST':
         body = request.get_json()
-        es.indices.create(index=body["name"], mappings=body["mappings"])
+        es.indices.create(
+            index=body["name"], mappings=body["mappings"], settings=body["settings"],)
         return jsonify(body), 201
     return jsonify(), 400
 
@@ -102,9 +103,10 @@ def search(index_name):
                     "query": {
                         "bool": {
                             "should": [
-                                {"match": {"name": {"query": search_term, "boost": 1.3}}},
-                                {"match": {"brand": {"query": search_term, "boost": 1.3}}},
-                                {"match": {"variety": {"query": search_term, "boost": 1}}},
+                                {"match": {"name": {"query": search_term, "boost": 1.6}}},
+                                {"match": {"brand": {"query": search_term, "boost": 1.1}}},
+                                {"match": {"variety": {
+                                    "query": search_term, "boost": 1.1}}},
                                 {"match": {"size": {"query": search_term, "boost": 1}}},
                                 {"match": {"unit": {"query": search_term, "boost": 1}}}
                             ]
@@ -114,11 +116,11 @@ def search(index_name):
                     "functions": [
                         {
                             "filter": {"match": {"class": "W"}},
-                            "weight": 1.2
+                            "weight": 1.1
                         },
                         {
                             "filter": {"match": {"class": "V"}},
-                            "weight": 1.2
+                            "weight": 1.1
                         },
                         {
                             "filter": {"match": {"category": "U"}},
@@ -129,13 +131,22 @@ def search(index_name):
                             "weight": 1
                         }
                     ],
-                    "score_mode": "max",
+                    "score_mode": "avg",
                     "boost_mode": "multiply"
                 }
             }
         }
         response = es.search(index=index_name, body=query)
         return jsonify(response.body), 200
+    return jsonify(), 400
+
+
+@app.route("/index/add-documents", methods=['POST'])
+def add_documents():
+    if request.method == 'POST':
+        data = request.get_json()
+        response = bulk(es, data["bulk_data"])
+        return jsonify(response), 200
     return jsonify(), 400
 
 
