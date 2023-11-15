@@ -7,7 +7,7 @@ from flask import (
     jsonify
 )
 
-import pandas as pd
+# import pandas as pd
 import logging
 
 
@@ -63,30 +63,30 @@ def document_index(index_name, id):
     return jsonify(), 400
 
 
-@app.route("/index/<string:index_name>/bulk-update", methods=['POST'])
-def bulk_update(index_name):
-    df = pd.read_csv("data/sample_products.csv")
-
-    bulk_data = []
-    for _i, row in df.iterrows():
-        print(f"Adding {row['id']}")
-        bulk_data.append(
-            {
-                "_index": index_name,
-                "_id": row["id"],
-                "_source": {
-                    "name": row["name"],
-                    "variety": row["variety"],
-                    "brand": row["brand"],
-                    "size": row["size"],
-                    "unit": row["unit"],
-                    "class": row["class"],
-                }
-            }
-        )
-
-    bulk(es, bulk_data)
-    return jsonify(), 200
+#@app.route("/index/<string:index_name>/bulk-update", methods=['POST'])
+#def bulk_update(index_name):
+#    df = pd.read_csv("data/sample_products.csv")
+#
+#    bulk_data = []
+#    for _i, row in df.iterrows():
+#        print(f"Adding {row['id']}")
+#        bulk_data.append(
+#            {
+#                "_index": index_name,
+#                "_id": row["id"],
+#                "_source": {
+#                    "name": row["name"],
+#                    "variety": row["variety"],
+#                    "brand": row["brand"],
+#                    "size": row["size"],
+#                    "unit": row["unit"],
+#                    "class": row["class"],
+#                }
+#            }
+#        )
+#
+#    bulk(es, bulk_data)
+#    return jsonify(), 200
 
 
 @app.route("/index/<string:index_name>/search", methods=['POST', 'GET'])
@@ -151,4 +151,5 @@ def add_documents():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5002)
+    app.run(debug=False, host='0.0.0.0', port=5002)
+
