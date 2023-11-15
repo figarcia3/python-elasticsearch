@@ -11,13 +11,13 @@ services:
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node
-  # web:
-  #   build: .
-  #   restart: always
-  #   ports:
-  #     - '5002:5002'
-  #   depends_on:
-  #     - search
+  web:
+    build: .
+    restart: always
+    ports:
+      - '5002:5002'
+    depends_on:
+      - search
 
 volumes:
   data:
