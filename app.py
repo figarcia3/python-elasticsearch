@@ -1,30 +1,45 @@
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
 
+from functools import wraps
+
+import os
+
 from flask import (
     Flask,
     request,
-    jsonify
+    jsonify,
 )
 
-# import pandas as pd
+from dotenv import load_dotenv
 import logging
 
 
+load_dotenv()
 logging.basicConfig(level=logging.DEBUG)
 
-es = Elasticsearch("http://localhost:9200")
+es = Elasticsearch("elastic://search:9200")
 app = Flask(__name__)
+
+
+def require_api_key(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        api_key = request.headers.get('x-api-key')
+        if not api_key or not api_key == os.environ.get("API_KEY"):
+            return jsonify({'error': 'Unauthorized'}), 401
+        return f(*args, **kwargs)
+    return decorated_function
 
 
 @app.route("/")
 def hello_world():
-    app.logger.info(es.info().body)
-    app.logger.info("Hello World")
-    return "<h1>Starter Flask App</h1>"
+    result = es.indices.get_alias(index="*")
+    return jsonify(result.body), 200
 
 
 @app.route("/index", methods=['POST', 'GET'])
+@require_api_key
 def list_index():
     if request.method == 'GET':
         result = es.indices.get_alias(index="*")
@@ -38,6 +53,7 @@ def list_index():
 
 
 @app.route("/index/<string:index_name>", methods=['GET', 'DELETE'])
+@require_api_key
 def show_index(index_name):
     if request.method == 'DELETE':
         es.indices.delete(index=index_name)
@@ -49,6 +65,7 @@ def show_index(index_name):
 
 
 @app.route("/index/<string:index_name>/document/<string:id>", methods=['POST', 'GET', 'DELETE'])
+@require_api_key
 def document_index(index_name, id):
     if request.method == 'POST':
         body = request.get_json()
@@ -63,33 +80,9 @@ def document_index(index_name, id):
     return jsonify(), 400
 
 
-#@app.route("/index/<string:index_name>/bulk-update", methods=['POST'])
-#def bulk_update(index_name):
-#    df = pd.read_csv("data/sample_products.csv")
-#
-#    bulk_data = []
-#    for _i, row in df.iterrows():
-#        print(f"Adding {row['id']}")
-#        bulk_data.append(
-#            {
-#                "_index": index_name,
-#                "_id": row["id"],
-#                "_source": {
-#                    "name": row["name"],
-#                    "variety": row["variety"],
-#                    "brand": row["brand"],
-#                    "size": row["size"],
-#                    "unit": row["unit"],
-#                    "class": row["class"],
-#                }
-#            }
-#        )
-#
-#    bulk(es, bulk_data)
-#    return jsonify(), 200
-
-
+b15ec68 (add api key)
 @app.route("/index/<string:index_name>/search", methods=['POST', 'GET'])
+@require_api_key
 def search(index_name):
     if request.method == 'POST':
         query = request.get_json()
@@ -142,10 +135,11 @@ def search(index_name):
 
 
 @app.route("/index/add-documents", methods=['POST'])
+@require_api_key
 def add_documents():
     if request.method == 'POST':
         data = request.get_json()
-        response = bulk(es, data["bulk_data"])
+        response = bulk(es, data["documents"])
         return jsonify(response), 200
     return jsonify(), 400
 
