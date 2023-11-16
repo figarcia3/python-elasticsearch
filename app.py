@@ -80,7 +80,6 @@ def document_index(index_name, id):
     return jsonify(), 400
 
 
-b15ec68 (add api key)
 @app.route("/index/<string:index_name>/search", methods=['POST', 'GET'])
 @require_api_key
 def search(index_name):
@@ -146,4 +145,3 @@ def add_documents():
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5002)
-
