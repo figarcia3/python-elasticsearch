@@ -1,18 +1,14 @@
-FROM python:3.9.10-alpine3.14
+FROM python:3.9
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /src
+WORKDIR /app
+COPY requirements.txt /app/
 
-RUN pip install --upgrade pip
-RUN pip install flask
-RUN pip install elasticsearch
-RUN pip install python-dotenv
+RUN pip install -r requirements.txt
 
+COPY . /app/
 
-COPY . /src
-ENV FLASK_APP=app
-
-RUN ["chmod", "+x", "/src/init.sh"]
-CMD ["/src/init.sh"]
+# RUN ["chmod", "+x", "/src/init.sh"]
+# CMD ["/src/init.sh"]

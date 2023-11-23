@@ -11,13 +11,32 @@ services:
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node
-  web:
-    build: .
-    restart: always
+  db:
+    container_name: db
+    image: postgres:14
+    volumes:
+      - db:/var/lib/postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=localshop
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  app:
+    container_name: app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - ./.env
+    working_dir: /app
     ports:
-      - '5002:5002'
-    depends_on:
-      - search
+      - '8000:8000'
+    volumes:
+      - ./:/app
 
 volumes:
+  db:
   data:
+
+
