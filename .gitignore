@@ -162,3 +162,5 @@ cython_debug/
 /.vscode
 /server_data
 /data
+
+.DS_Store
