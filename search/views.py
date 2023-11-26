@@ -50,6 +50,10 @@ class DocumentIndexView(View):
             documents.append(doc)
         return JsonResponse(documents, safe=False, status=200)
 
+    def delete(self, request, index_name):
+        es.delete_by_query(index=index_name, body={"query": {"match_all": {}}})
+        return JsonResponse({}, status=204)
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class DocumentShowView(View):
