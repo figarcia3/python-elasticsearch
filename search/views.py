@@ -4,12 +4,11 @@ from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
+from devtools import debug
+
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
 from search.utils import transform_json_list
-
-# Assuming you have a Django project with an app named 'your_app'
-# Add this to your_app/views.py
 
 es = Elasticsearch("elastic://search:9200")
 
@@ -22,8 +21,13 @@ class ListIndexView(View):
 
     def post(self, request):
         body = json.loads(request.body)
-        result = es.indices.create(
-            index=body["name"], mappings=body["mappings"], settings=body["settings"])
+        print(body)
+        try:
+            result = es.indices.create(
+                index=body["name"], mappings=body["mappings"], settings=body["settings"])
+        except Exception as e:
+            debug(e)
+            return JsonResponse({"error": str(e)}, status=400)
         return JsonResponse(result.body, safe=False, status=201)
 
 
@@ -86,7 +90,8 @@ class SearchView(View):
                     "query": {
                         "bool": {
                             "should": [
-                                {"match": {"name": {"query": search_term, "boost": 1}}},
+                                {"match_phrase": {
+                                    "name": {"query": search_term, "boost": 1}}},
                                 {"match": {"brand": {"query": search_term, "boost": 1}}},
                                 {"match": {"variety": {"query": search_term, "boost": 1}}},
                                 {"match": {"size": {"query": search_term, "boost": 1}}},
@@ -115,7 +120,6 @@ class SearchView(View):
                     ],
                     "score_mode": "multiply",
                     "boost_mode": "multiply",
-                    "min_score": 10
                 }
             }
         }
