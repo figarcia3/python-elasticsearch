@@ -62,7 +62,7 @@ class DocumentShowView(View):
         return JsonResponse(response, safe=False, status=200)
 
     def post(self, request, index_name, id):
-        body = self.request.json
+        body = json.loads(request.body)
         es.index(index=index_name, id=id, document=body)
         return JsonResponse(body, safe=False, status=200)
 
@@ -74,8 +74,8 @@ class DocumentShowView(View):
 @method_decorator(csrf_exempt, name='dispatch')
 class SearchView(View):
     def post(self, request, index_name):
-        query = self.request.json
-        response = es.search(index=index_name, body=query)
+        body = json.loads(request.body)
+        response = es.search(index=index_name, body=body)
         return JsonResponse(response.body, safe=False, status=200)
 
     def get(self, request, index_name):
@@ -86,24 +86,36 @@ class SearchView(View):
                     "query": {
                         "bool": {
                             "should": [
-                                {"match": {"name": {"query": search_term, "boost": 1.6}}},
-                                {"match": {"brand": {"query": search_term, "boost": 1.1}}},
-                                {"match": {"variety": {
-                                    "query": search_term, "boost": 1.1}}},
+                                {"match": {"name": {"query": search_term, "boost": 1}}},
+                                {"match": {"brand": {"query": search_term, "boost": 1}}},
+                                {"match": {"variety": {"query": search_term, "boost": 1}}},
                                 {"match": {"size": {"query": search_term, "boost": 1}}},
                                 {"match": {"unit": {"query": search_term, "boost": 1}}}
                             ]
                         }
                     },
-                    "boost": "5",
+                    "boost": 3,
                     "functions": [
-                        {"filter": {"match": {"class": "W"}}, "weight": 1.1},
-                        {"filter": {"match": {"class": "V"}}, "weight": 1.1},
-                        {"filter": {"match": {"class": "U"}}, "weight": 1},
-                        {"filter": {"match": {"class": "C"}}, "weight": 1}
+                        {
+                            "filter": {"match": {"class": "W"}},
+                            "weight": 5
+                        },
+                        {
+                            "filter": {"match": {"class": "V"}},
+                            "weight": 5
+                        },
+                        {
+                            "filter": {"match": {"category": "U"}},
+                            "weight": 1
+                        },
+                        {
+                            "filter": {"match": {"category": "C"}},
+                            "weight": 1
+                        }
                     ],
-                    "score_mode": "avg",
-                    "boost_mode": "multiply"
+                    "score_mode": "multiply",
+                    "boost_mode": "multiply",
+                    "min_score": 10
                 }
             }
         }

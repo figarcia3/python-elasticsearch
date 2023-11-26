@@ -28,6 +28,7 @@ SILENCED_SYSTEM_CHECKS = ['urls.W001']
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-nb6%lkgnl-g#e(t-!_a*3&#znj!e$@$b&p^b^j7&27=v@60$j_'
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10000000
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
