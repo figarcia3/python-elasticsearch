@@ -15,3 +15,9 @@ def transform_json_list(json_list, index_name, mappings):
         transformed_list.append(transformed_json)
 
     return transformed_list
+
+
+def build_doc(source):
+    doc = source["_source"]
+    doc["id"] = source["_id"]
+    return doc

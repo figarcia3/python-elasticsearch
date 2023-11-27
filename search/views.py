@@ -8,7 +8,7 @@ from devtools import debug
 
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
-from search.utils import transform_json_list
+from search.utils import build_doc, transform_json_list
 
 es = Elasticsearch("elastic://search:9200")
 
@@ -21,13 +21,8 @@ class ListIndexView(View):
 
     def post(self, request):
         body = json.loads(request.body)
-        print(body)
-        try:
-            result = es.indices.create(
-                index=body["name"], mappings=body["mappings"], settings=body["settings"])
-        except Exception as e:
-            debug(e)
-            return JsonResponse({"error": str(e)}, status=400)
+        result = es.indices.create(
+            index=body["name"], mappings=body["mappings"], settings=body["settings"])
         return JsonResponse(result.body, safe=False, status=201)
 
 
@@ -49,9 +44,7 @@ class DocumentIndexView(View):
                              "query": {"match_all": {}}})
         documents = []
         for hit in response["hits"]["hits"]:
-            doc = hit["_source"]
-            doc["id"] = hit["_id"]
-            documents.append(doc)
+            documents.append(build_doc(hit["_source"]))
         return JsonResponse(documents, safe=False, status=200)
 
     def delete(self, request, index_name):
@@ -63,7 +56,8 @@ class DocumentIndexView(View):
 class DocumentShowView(View):
     def get(self, request, index_name, id):
         response = es.get(index=index_name, id=id)
-        return JsonResponse(response, safe=False, status=200)
+        doc = build_doc(response.body["_source"])
+        return JsonResponse(doc, safe=False, status=200)
 
     def post(self, request, index_name, id):
         body = json.loads(request.body)
