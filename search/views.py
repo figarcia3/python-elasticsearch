@@ -8,17 +8,24 @@ from devtools import debug
 
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
-from search.utils import build_doc, transform_json_list
+
+from search.utils import auth_decorator, build_doc, transform_json_list
+
+from functools import wraps
+
 
 es = Elasticsearch("elastic://search:9200")
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ListIndexView(View):
+
+    @auth_decorator
     def get(self, request):
         result = es.indices.get_alias(index="*")
         return JsonResponse(result.body, safe=False, status=200)
 
+    @auth_decorator
     def post(self, request):
         body = json.loads(request.body)
         result = es.indices.create(
@@ -28,10 +35,13 @@ class ListIndexView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ShowIndexView(View):
+
+    @auth_decorator
     def get(self, request, index_name):
         result = es.indices.get_alias(index=index_name)
         return JsonResponse(result.body, safe=False, status=200)
 
+    @auth_decorator
     def delete(self, request, index_name):
         es.indices.delete(index=index_name)
         return JsonResponse({}, status=204)
@@ -39,6 +49,8 @@ class ShowIndexView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class DocumentIndexView(View):
+
+    @auth_decorator
     def get(self, request, index_name):
         response = es.search(index=index_name, body={
                              "query": {"match_all": {}}})
@@ -47,6 +59,7 @@ class DocumentIndexView(View):
             documents.append(build_doc(hit["_source"]))
         return JsonResponse(documents, safe=False, status=200)
 
+    @auth_decorator
     def delete(self, request, index_name):
         es.delete_by_query(index=index_name, body={"query": {"match_all": {}}})
         return JsonResponse({}, status=204)
@@ -54,16 +67,20 @@ class DocumentIndexView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class DocumentShowView(View):
+
+    @auth_decorator
     def get(self, request, index_name, id):
         response = es.get(index=index_name, id=id)
-        doc = build_doc(response.body["_source"])
+        doc = build_doc(response.body)
         return JsonResponse(doc, safe=False, status=200)
 
+    @auth_decorator
     def post(self, request, index_name, id):
         body = json.loads(request.body)
         es.index(index=index_name, id=id, document=body)
         return JsonResponse(body, safe=False, status=200)
 
+    @auth_decorator
     def delete(self, request, index_name, id):
         es.delete(index=index_name, id=id)
         return JsonResponse({}, status=204)
@@ -71,11 +88,14 @@ class DocumentShowView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class SearchView(View):
+
+    @auth_decorator
     def post(self, request, index_name):
         body = json.loads(request.body)
         response = es.search(index=index_name, body=body)
         return JsonResponse(response.body, safe=False, status=200)
 
+    @auth_decorator
     def get(self, request, index_name):
         search_term = self.request.GET.get('q')
         query = {
@@ -85,30 +105,33 @@ class SearchView(View):
                         "bool": {
                             "should": [
                                 {"match_phrase": {
-                                    "name": {"query": search_term, "boost": 1}}},
-                                {"match": {"brand": {"query": search_term, "boost": 1}}},
-                                {"match": {"variety": {"query": search_term, "boost": 1}}},
-                                {"match": {"size": {"query": search_term, "boost": 1}}},
-                                {"match": {"unit": {"query": search_term, "boost": 1}}}
+                                    "product_name.name": {"query": search_term, "boost": 1}}},
+                                {"match": {"brand.name": {
+                                    "query": search_term, "boost": 1}}},
+                                {"match": {"variety_name": {
+                                    "query": search_term, "boost": 1}}},
+                                {"match": {"quantity": {"query": search_term, "boost": 1}}},
+                                {"match": {"measure_unit.name": {
+                                    "query": search_term, "boost": 1}}}
                             ]
                         }
                     },
                     "boost": 3,
                     "functions": [
                         {
-                            "filter": {"match": {"class": "W"}},
+                            "filter": {"match": {"product_class.id": "W"}},
                             "weight": 5
                         },
                         {
-                            "filter": {"match": {"class": "V"}},
+                            "filter": {"match": {"product_class.id": "V"}},
                             "weight": 5
                         },
                         {
-                            "filter": {"match": {"category": "U"}},
+                            "filter": {"match": {"product_class.id": "U"}},
                             "weight": 1
                         },
                         {
-                            "filter": {"match": {"category": "C"}},
+                            "filter": {"match": {"product_class.id": "C"}},
                             "weight": 1
                         }
                     ],
@@ -123,6 +146,8 @@ class SearchView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class AddDocumentsView(View):
+
+    @auth_decorator
     def post(self, request, index_name):
         mappings = es.indices.get_mapping(index=index_name)
         mappings_list = mappings[index_name]['mappings']['properties'].keys()

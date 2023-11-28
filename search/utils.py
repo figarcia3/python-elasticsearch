@@ -1,3 +1,7 @@
+from django.conf import settings
+from functools import wraps
+
+
 def transform_json_list(json_list, index_name, mappings):
     transformed_list = []
 
@@ -8,7 +12,7 @@ def transform_json_list(json_list, index_name, mappings):
 
         transformed_json = {
             "_index": index_name,
-            "_id": input_json["id"],
+            "_id": input_json["eanid"],
             "_source": source_data
         }
 
@@ -21,3 +25,20 @@ def build_doc(source):
     doc = source["_source"]
     doc["id"] = source["_id"]
     return doc
+
+
+def check_api_key(request):
+    api_key = request.headers.get("X-API-KEY", None)
+    if api_key is None:
+        return False
+    return api_key == settings.API_KEY
+
+
+def auth_decorator(func):
+    @wraps(func)
+    def func_wrapper(*args, **kwargs):
+        api_key = args[0].request.headers.get("X-API-KEY", None)
+        if api_key is None or api_key != settings.API_KEY:
+            raise PermissionError("Invalid API Key")
+        return func(*args, **kwargs)
+    return func_wrapper
