@@ -110,34 +110,57 @@ class SearchView(View):
                     "query": {
                         "bool": {
                             "should": [
-                                {"match": {
-                                    "product_name.name": {"query": search_term, "boost": 1}}},
-                                {"match": {"brand.name": {
-                                    "query": search_term, "boost": 1}}},
+                                {'nested': {
+                                    'path': 'product_name',
+                                    'query': {
+                                        "bool": {
+                                            "should": [
+                                                {"match_phrase": {
+                                                    "product_name.name": {"query": search_term, "boost": 1}}}]}}}},
+                                {'nested': {
+                                    'path': 'brand',
+                                    'query': {
+                                        "bool": {
+                                            "should": [
+                                                {"match": {
+                                                    "brand.name": {"query": search_term, "boost": 1}}}]}}}},
                                 {"match": {"variety_name": {
                                     "query": search_term, "boost": 1}}},
                                 {"match": {"quantity": {"query": search_term, "boost": 1}}},
-                                {"match": {"measure_unit.name": {
-                                    "query": search_term, "boost": 1}}}
+                                {'nested': {
+                                    'path': 'measure_unit',
+                                    'query': {
+                                        "bool": {
+                                            "should": [
+                                                {"match": {
+                                                    "measure_unit.name": {"query": search_term, "boost": 1}}}]}}}},
                             ]
                         }
                     },
                     "boost": 3,
                     "functions": [
                         {
-                            "filter": {"match": {"product_class.id": "W"}},
+                            "filter": {'nested': {
+                                'path': 'product_class',
+                                'query': {"match": {"product_class.id": "W"}}}},
                             "weight": 5
                         },
                         {
-                            "filter": {"match": {"product_class.id": "V"}},
+                            "filter": {'nested': {
+                                'path': 'product_class',
+                                'query': {"match": {"product_class.id": "V"}}}},
                             "weight": 5
                         },
                         {
-                            "filter": {"match": {"product_class.id": "U"}},
+                            "filter": {'nested': {
+                                'path': 'product_class',
+                                'query': {"match": {"product_class.id": "U"}}}},
                             "weight": 1
                         },
                         {
-                            "filter": {"match": {"product_class.id": "C"}},
+                            "filter": {'nested': {
+                                'path': 'product_class',
+                                'query': {"match": {"product_class.id": "C"}}}},
                             "weight": 1
                         }
                     ],
@@ -159,10 +182,7 @@ class AddDocumentsView(View):
         mappings_list = mappings[index_name]['mappings']['properties'].keys()
 
         body = json.loads(request.body)
-        docs = transform_json_list(body, index_name, mappings_list)
-        # print(docs)
-        try:
-            response = bulk(es, docs)
-        except Exception as e:
-            print(f"List of errors: {e.errors}")
+        body = transform_json_list(body, index_name, mappings_list)
+
+        response = bulk(es, body)
         return JsonResponse(response, safe=False, status=200)
