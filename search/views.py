@@ -17,6 +17,12 @@ from functools import wraps
 es = Elasticsearch("elastic://search:9200")
 
 
+class BulkIndexError(Exception):
+    def __init__(self, message, errors):
+        super().__init__(message)
+        self.errors = errors
+
+
 @method_decorator(csrf_exempt, name='dispatch')
 class ListIndexView(View):
 
@@ -56,7 +62,7 @@ class DocumentIndexView(View):
                              "query": {"match_all": {}}})
         documents = []
         for hit in response["hits"]["hits"]:
-            documents.append(build_doc(hit["_source"]))
+            documents.append(build_doc(hit))
         return JsonResponse(documents, safe=False, status=200)
 
     @auth_decorator
@@ -104,7 +110,7 @@ class SearchView(View):
                     "query": {
                         "bool": {
                             "should": [
-                                {"match_phrase": {
+                                {"match": {
                                     "product_name.name": {"query": search_term, "boost": 1}}},
                                 {"match": {"brand.name": {
                                     "query": search_term, "boost": 1}}},
@@ -153,7 +159,10 @@ class AddDocumentsView(View):
         mappings_list = mappings[index_name]['mappings']['properties'].keys()
 
         body = json.loads(request.body)
-        body = transform_json_list(body, index_name, mappings_list)
-
-        response = bulk(es, body)
+        docs = transform_json_list(body, index_name, mappings_list)
+        # print(docs)
+        try:
+            response = bulk(es, docs)
+        except Exception as e:
+            print(f"List of errors: {e.errors}")
         return JsonResponse(response, safe=False, status=200)

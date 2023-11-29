@@ -4,7 +4,6 @@ from functools import wraps
 
 def transform_json_list(json_list, index_name, mappings):
     transformed_list = []
-
     for input_json in json_list:
         source_data = {}
         for field in mappings:
