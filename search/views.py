@@ -115,7 +115,7 @@ class SearchView(View):
                                     'query': {
                                         "bool": {
                                             "should": [
-                                                {"match_phrase": {
+                                                {"match": {
                                                     "product_name.name": {"query": search_term, "boost": 1}}}]}}}},
                                 {'nested': {
                                     'path': 'brand',
