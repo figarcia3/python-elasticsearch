@@ -22,7 +22,7 @@ def transform_json_list(json_list, index_name, mappings):
 
 def build_doc(source):
     doc = source["_source"]
-    doc["id"] = source["_id"]
+    doc["eanid"] = source["_id"]
     return doc
 
 

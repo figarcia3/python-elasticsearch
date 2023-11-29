@@ -170,7 +170,10 @@ class SearchView(View):
             }
         }
         response = es.search(index=index_name, body=query)
-        return JsonResponse(response.body, safe=False, status=200)
+        documents = []
+        for hit in response["hits"]["hits"]:
+            documents.append(hit["_source"])
+        return JsonResponse(documents, safe=False, status=200)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
