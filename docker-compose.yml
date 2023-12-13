@@ -15,6 +15,7 @@ services:
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
   db:
     container_name: db
     image: postgres:14
@@ -30,12 +31,12 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.app
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8010
     env_file:
       - ./.env
     working_dir: /app
     ports:
-      - '8000:8000'
+      - '8010:8010'
     volumes:
       - ./:/app
 
