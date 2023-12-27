@@ -418,8 +418,10 @@ class MultiSearchView(View):
                 }
             }
             }
-        
-        response = es.search(index='store_products', body=query_stores)
+        try:
+            response = es.search(index='store_products', body=query_stores)
+        except:
+            print("errors ", response)
         documents_store_products = []
         for hit in response["hits"]["hits"]:
             documents_store_products.append(hit["_source"])
