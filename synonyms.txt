@@ -3,14 +3,9 @@ marraqueta, pan frances, pan batido, marraquetas
 tomate, tomates
 platanos, platanos, bananas, guineos
 bebida, gaseosa, soda, refresco
-bebida, zero, cero, gaseosa, soda, refresco
-galletas, cookies, botana, snack, golosinas, dulces
 empanada, empanadas
 zanahoria, zanahorias
-lechuga, lechuga carola
-huevos de gallina, huevos
 limon, limones
-cerveza, patagonia celeste
 naranja, naranjas
 zapallo, zapallito, zuquini, zukini, zapallos, calabacin, calabacita, zapallito, guicoy
 cigarrillos, pucho, cigarro, cigarros
@@ -18,141 +13,68 @@ palta, paltas
 duraznos, duraznos
 pepino ensalada, pepinos
 muffin, mafin, mufin
-pimenton, pimentones, pimiento, pimientos
-empanada, empanadas, empanada de pino
 zapallo, zapallos
 cebolla, cebollas
 palmeras, palmeritas, palmera, palmerita
-lechuga, lechugas marina
-nectar, light, sin azucar
-lechuga, lechuga costina
 palta, paltas, aguacates, aguacate
 dobladitas, dobladita
 palmeras, palmeritas
 manzana, manzanas
-calzon roto, calzones rotos
-manjar, frasco
 melon, melones
-empanada, empanadas pino
 mendocino, mendocinos
-cerveza, red lager, patagonia amarilla
 brocoli, brocolis
 sopaipilla, sopaipillas
 cebollin, cebollines
-toalla de cocina, toalla absorvente, toalla de papel, toalla de cocina, toalla nova, papel absorvente
-cebolla, cebolla blanca
 jengibre, gengibre, jengibres
 ajo, ajos
-bebida, cero, gaseosa, soda, refresco
-amasado, panes, pan
-manzana, manzanas rojas
 kiwi, kiwis
 frutillas, frutilla
-bebida, normal, gaseosa, soda, refresco
-pie, pai de limon, pay de limon
-cafe, sachet de nescafe, nescafe en bolsita
+bebida, gaseosa, soda, refresco
+pie, pai, pay
 donas, donuts, donut
 champinones, champinon
-alfajor, maizena
-pan masa madre, panes, pan
-pimenton, pimentones, pimientos
+pimenton, pimentones
 helado, sorbete
-nectar, andina
-tartaleta, frambueza
 lentejas, lentejas
 limones, limones
-colegial, colegial, colegial tradicional
-cassata, caja, cassatta
-galletas, cookies, botana, snack
-uva, uva rosada, uba rosada
-pollo asado, trutro, tuto, tutro, truto
-coliza, pan, panes, pan de hot dog, pan de hotdog
-alcachofa, tarro, frasco, lata, alcausil
-platanos, platanos maduros
+uva, uba
+trutro, tuto, tutro, truto
 dona, donuts, donut
-aceite, aceite normal
 uva, uva, uvas
 brownie, brauni, brony
-papel higienico, papel confort
-bebida, sin azucar, cero, gaseosa, soda, refresco
-baguette, pan, panes pan baggette, pan baguete
-pan de hamburguesa, panes de hamburguesa
-peras, pera
-chocolate, botana, snack, golosinas, dulces
+papel higienico, confort
+baguette, baggette, baguete
 mandarinas, mandarinas
-salchichas, vianesas, salchichas, vienesas, salchicha, hot dog
 cerezas, cereza
-hallulla integral, ayuya integral, hayuya integral, halluya integral, allulla integral, alluya integral, ayulla integral, hayulla integral, hallullas integral, pan de hallulla integral
-empanada, queso con champinones
-pina, anana, pinas, ananas
+piña, anana, piñas, ananas
 kuchen, kujen, kugen, kuchen, kugen, kujen
 apio, apios
 espinaca, espinaca
-yogurt, yogour, yogur, yogourt, yogurt
-lechuga, lechugas hidroponicas
-aceitunas, aceituna negra
+aceitunas, aceituna
 berenjenas, berenjena
 ciruela, ciruelas
-melon, melones calamenos
-agua con sabor, zero, cero azucar anadida
+melon, calamenos, melones
 mostaza, mustard
-huevos de gallina, huevo, huevo de gallina, huevo color
-cebolla, cebollas blancas
 espinaca, espinacas
 bizcocho, bizcochos, biscochos
-peras, peras
-tortas, frambueza
-pan con chicharrones, panes
 frutillas, frutillas
 betarragas, betarragas, beterragas, beterraga
-oblea, barquillo, galleta, botana, snack, bauduco
-salchichas/vienesas, vianesas, salchichas, vienesas, salchicha, hot dog
-helado, frambueza, sorbete
-servilleta, cocktail
-verduras, verduras surtidas
+salchichas, vianesas, salchichas, vienesas, salchicha, hot dog
 jalea, gelatina
 berlin, berlinesa, berlina, bollo, suspiro de monja, berlini
-berlin, tradicional, berlinesa, berlina, bollo, suspiro de monja, berlini
 salame, salami, peperoni, pepperoni
-galletas, donas, donus, cookies, botana, snack, golosinas, dulces
 colado, papilla
-toalla de papel, toalla absorvente, toalla de papel, toalla de cocina, toalla nova, papel absorvente
-mayonesa, frasco
-atun, van camp, van camps, tarro
 choclo, choclo, jojoto, corn, milho, elote, maiz
-postre helado, caja
 jengibre, jengibres
-papilla, papilla
-pate, pasta
-yogurt, uno mas uno, yogour, yogur, yogourt, yogurt
-jugo, andina
-membrillo, membrillos
-servilleta, servilleta coctel
-pepino fruta, pepinos
-galletas, cocktail, cookies, coctel, botana, snack
-oregano, especias
-comino, especias
-merken, especias
-jalea, gelatina, frambueza
-kuchen, kujen, kugen, kuchen, kugen, kujen, frambueza
-ciabatta, pan chiabata, chapata
+pepino, pepinos
+kuchen, kujen, kugen, kuchen, kugen, kujen
+ciabatta, chiabata, chapata
 clementina, mandarinas
-papas y camote, camote, camote morado, bataca, batata, boniato, buniato, moniato, moniatos, patata de malaga, batata dulce, patata dulce, minina.
 jamon sandwich, sanwich
-malvavisco, marshmallow, botana, snack, golosinas, dulces, masmelos
-betarragas, beterraga
-te, infusion
-lasana precocida, lasagna
-fideos, spaguetti, spaghetti, espagueti
-delicia, frambueza
-queso, gauda
-yogurt, chococrispi, chocokrispi, yogour, yogur, yogourt, yogurt
-leche evaporada, frasco, lata,tarro
-atun, tarro
+malvavisco, marshmallow, masmelos
+yogurt, yogour, yogur, yogourt, yogurt
 aceitunas, aceituna
 ketchup, catchup, catsup
-nectar, frambueza
-vino, vino 1865
 leche, cero
 leche evaporada, frasco, lata, tarro
 nugguets, nuguet, nuguett, naguet
@@ -160,354 +82,122 @@ leche, soja
 aji, chile, morron, guindilla, cayena, pimiento
 cassata, cassatta
 lavaloza, lavaloza, lavavajillas
-platano barraganette, platano verde,  banana, bananas, guineos
-pan de hot dog, pan copihue, pan copigue, pan hoc tog, pan hotdog, hotdog
-muffin, mafin, mufin, frambueza
-chocolate, sin azucar anadida, sugar free
-leche evaporada, tarro
+muffin, mafin, mufin
 fideos, tallarines, tallarin, pasta
-desodorante, antitranspirante
-cafe, lata
-chips, botana, snack, frutos secos
-azucar, impalpable
-agua con sabor, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
-bruselas, repollo de bruselas, repollito de buselas
-camote, camote, camote morado, bataca, batata, boniato, buniato, moniato, moniatos, patata de malaga, batata dulce, patata dulce, minina.
-alino completo, especias
-cerveza, cistal cero
+bruselas, buselas
+camote, camote, bataca, batata, boniato, buniato, moniato, moniatos, batata, patata, minina
 coctel, coctail, cocktel, coktel, cocktail
-cerveza, cero
 desodorante, antitranspirante, aerosol, spray
 cabritas, cabritas, palomitas, pipocas, pochoclo, pororo, poporocho, pipoca pororo, cabritas, palomitas de maiz, crispetas, maiz pira, maiz tote, cangul
 gelatina, jalea
-te, ceylan, infusion
-te, ceylon, infusion
 arandanos, mirtilo, arandano azul, muerdano, anavia, raspano
-cheesecake, sugar free
-choclitos, lata, cocktail
-helado artesanal, sorbete
-mani, frambueza
 pastas, tallarines, tallarin, pasta
-toalla desinfectante, toallitas desinfectantes, toallas humedas, toallitas humedas
+desinfectante, desinfectantes, humedas
 shampoo, champu
 whisky, whiskey, bourbon
-choritos, lata
-pastel, frambueza
-isotonica, cero
-laurel, especias
-aji de color, paprika, especias
-mermelada, sin azucar
-arvejas, guisante, chicharo
-bebida, seven up, gaseosa, soda, refresco
-jamon sandwich, sanwich, sanduich
-vino, alihue, aliwuea, alyhue
-shampoo, champu ballerina, champoo ballerina
+aji de color, paprika
+sandwich, sanwich, sanduich
+alihue, aliwuea, alyhue
 tuna, tunas
-trutro de pollo, trutro, truto, tutro
 huachalomo, guachalomo
-yogueta, koyack
 frambuesas, frambueza, frambuesas
-crema, dulce de leche
-pollo, trutro, truto, tutro
-mani, botana, snack, frutos secos, deshidratados
+trutro, truto, tutro, tuto
 lasana, lasagna
-hamburguesa, soja
-papaya, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza, deshidratadas, frutos secos, botana, snack, golosinas, dulces
-gelatina, jalea, frambueza
-pastas, fideos, spaguetti, espagueti
-atun, tarro, frasco, lata
-espumante, champagne, champana, sidra
+tarro, frasco, lata
 afeitadora, rasuradora
-cassata, frambueza, cassatta
-envase vacio, botella retornable, envase reciclable
-bebida, sin azucar, gaseosa, soda, refresco
-berlin, berlin con pastelera
-media luna, croissant, croassant
-desinfectante, limpiador multiuso
-tartaleta, tartaleta pequena
-espumante, undurraga, champagne, champana, sidra
-tinta de impresora, cian
-habas, botana, snack
-jugo, zumo
-mango, botana, snack, golosinas, dulces
-galletas, moka, cookies, botana, snack, golosinas, dulces
-ron, mitchans
+cassata, cassatta
+desinfectante, limpiador
 ginebra, gin, ginebra
-porotos verdes, poroto
-mix de snacks, botana, snack, cookies, golosinas
-guindas, guindas
-garbanzos, garbanzos
-porotos, alubias o judias, frijoles, frijol, frejol, caraotas, frejol
-vino, gewurztraminer
-salmon, rebanadas, trozos
 cranberries, cramberry, crambery
 dobladitas, dobladas
-detergente, detergente liquido
 lavalozas, lavaloza, lavavajillas
-jugo, frambueza
-rabano, rabano blanco
-brownie, brauny, browny
+brownie, brauny, browny, brauni
 tortita, pastel
 maizena, maicena
 media luna, croassant, croissant
-papelillos, papel de fumar
-aceto balsamico, aceite balsamico, vinagre balsamico
-jabon liquido, jabon liquido
 servilleta, avolengo
-harina, con polvos de hornear
-mani, botana, snack, cookies, golosina
-chocolate, chocolate amargo, botana, snack, golosinas, dulces
-gomita, botana, snack, golosinas, dulces
-desodorante, spray, antitranspirante
-chocolate, chocolate amargo, libre de azucar, sugar free, botana, snack, golosinas, dulces
-chocolate, libre de azucar, sugar free, botana, snack, golosinas, dulces
-oblea, barquillo, galleta, botana, snack
 virutilla, esponja de metal
-besitos, suspiro
-bizcocho, cookies, botana, snack, golosinas, dulces
-galletas, craquers, cocktail, cookies, coctel, botana, snack
-empolvado, quequitos, botana, snacks
-magdalena, quequitos, botana, snacks
-galletas de arroz, cocktail, cookies, coctel, botana, snack
-galletas, barra, cereal, cookies, botana, snack
-te, mint, agua de hierbas, infusion
-te, apple, infusion
-mani, botana, snack, frutos secos
-cereales, barra, cereal, cookies, botana, snack
-cereales, frambueza, barra, cereal, cookies, botana, snack
-frutos secos, barra, cereal, cookies, botana, snack
-merengue, suspiro, golosinas, dulces
-chop suey, chapsui, chapsui
-almendras, botana, snack, frutos secos
-pimienta, especias
-palmitos, tarro, frasco, lata
-chocolate, cookies, botana, snack, golosinas, dulces
-mani, botana, snack
-pastas, fideos
-canela, especias
-cacao, cacao, cocoa
-queso, gouda, gauda
-galleton, cookies, botana, snack, golosinas, dulces
-ostiones, mariscos
+cocktail, coctel
+chop suey, chapsui
+cacao, cocoa
 sufle, souffle
-tortillas de maiz, chips
-curry, especias
-fideos, luchetti, luccheti, luquetti
-caracoquesos, luchetti, luccheti, luquetti
-fideos, pasta, tallarines, fideos
+luchetti, luccheti, luquetti
 avena, quacker, kuaker, kuaquer
 maizena, maicena, almidon de maiz
-mermelada, frambueza, sin azucar
-yogurt, yogour, yogur, yogourt, yogurt, frambueza
-yogurt, yogour, yogur, yogourt, yogurt, light
-pannacotta, frambueza
-volcan, frambueza
-jamon sandwich, sanwich, fiambre
-yogurt, yogour, yogur, yogourt, yogurt, zucaritas
-mousse, espuma
-curcuma, especias
-carne vegetal, soja
-te, taragui
 detergente, jabon en polvo
-duraznos, tarro, frasco, lata
-frutillas, tarro, frasco, lata
-mix de snacks, botana, golosina
 pastas, pasta, fideos, espagueti
-carne de soya, soja
-mermelada, frambueza
-nectar, 0% azucar anadida, sin azucar
-nectar, tuti papaya
-sangria, san pedro
-estragon, especias
-mostaza, especias
-paprika, especias
-vela iluminacion, vela apagon
-pisco, pisco 1733
 desodorante, antiranspirante
-jalea, mermelada, confit, confitura, chutney
-chutney, mermelada, confit, confitura, jalea
-confituras, mermelada, confit, chutney, jalea
 alimento perros, comida para perros, pelet, pienso
-bebida vegetal, bebida vegetal
-yogurt, yogour, yogur, yogourt, yogurt, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
-esparragos, pote
-alcachofa, pote, alcausil
-alcachofa, pote
-salsa, pote, dip, sala
-bizcocho, light, sugar free
-chocolate, oblea, wafer
-atun, steak
-chicle, goma de mascar, goma de masticar, sugar free
-dona, donuts, donut, frambueza
+yogurt, yogour, yogur, yogourt, yogurt
+dona, donuts, donut
 pilas, d+
 pilas, triple a
 pilas, doble a
-leche de coco, frasco, lata,tarro
-algodon, copos de algodon,
 te, blackcurrant, grosellas, infusion
 chicle, goma de mascar, goma de masticar
 champinones, seta, xampinyo, champignon
 vino, shiraz
 espumante, espumante, champagne, champana, sidra
-nectar, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
-palta, malla, aguacate, abacate, avocato
-maiz, botana, snack
-ron, promo
+palta, aguacate, abacate, avocato
 shampoo, champu, shampu
-mermelada, jalea, confitura, compota, dulce
-salsa de soya, soja, sillao, siyau, soy sauce, kiko
 cochayuyo, alga
-salchichon cervecero, jamon, jamones
-cereales, sugar free
 arvejas, arverjas, guisante, chicharo
 granizado, batido
 yerba mate, taragui
-jugo en polvo, cero, sin azucar anadida, sugar free, light
-masticables, snack, golosinas, dulces
-gomita, snack, golosinas, dulces
-caramelo, tofee,toffee, toffy
-caramelo, tofee,toffee, toffy, snack, golosinas, dulces
-caramelo, tofee,toffee, toffy,  snack, golosinas, dulces
-cerveza, zero
-queso, gruyer, gruller, gruyere
-bombon, con chocolina
-caramelo duro, snack, golosinas, dulces
+tofee,toffee,toffy
+gruyer, gruller, gruyere
 alimento gatos, wiskas
-turron, snack, golosinas, dulces
-chocolate, barra, cereal, cookies, botana, snack
-damasco, botana, snack, frutos secos
-cigarrillos, malboro, pucho, cigarro, cigarros
+cigarrillos, pucho, cigarro, cigarros
 toffee, toffe
-pisco, pisco blanco
-salsa de soya, soja, sillao, siyau, soy sauce
-bebida, gaseosa, soda, refresco, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
-agua con sabor, balance
-mix frutas, tarro, frasco, lata
-nectar, andina, zero, cero azucar anadida
+soya, soja, sillao, siyau, soy sauce
+lechosa, lechoza
 sufle, souffle, souffle
 vino, ensamblaje
 fideos, fideos, pasta
-pastas, fideos, pasta
-leche, sorpole
-manjar, dulce de leche
-leche, leche cafe caramelo de litro colun, leche colun caramelo cafe tetra
 tintura, tinte
 acondicionador, balsamo
 duraznos, melocoton, alberchigo, abridor, fresquilla, pavia, nectarina
-servilleta, avolengo, coctel
+servilleta, avolengo
 pure de frutas, colado
-te, ceylon, ceylan, infusion
+te, infusion
 mondadientes, moldadientes
-guante aseo, guantes de goma
-nectar, caja
-nectar, 0% azucar anadida, sin azucar, caja
 escobillon, escoba
 sucralosa, endulzante
-jugo en polvo, refresco, sin azuca, con sucralosa, 0% azucar
-jalea, jalea
-chocolate, botana, golosina
-cereales, botana, snack, cookies, golosinas
-semola, frambueza
-arroz con leche, postre
-galletas coctel, coctel, coctail, cocktel, coktel
-vino, miguel torres
-avellanas, botana, snack, frutos secos
-barra chocolate, botana, snack, golosinas, dulces
-oblea, cookies, botana, snack, golosinas, dulces
-oblea, zero, cero, barquillo, galleta, botana, snack
-galletas de arroz, cookies, botana, snack, golosinas
-mermelada, sugar free
-eneldo, especias
-galletas saladas, cookies, botana, snack
+coctel, coctail, cocktel, coktel
 chips, botana
-castanas, botana, snack, frutos secos
-bizcocho, botana, snack, cookies, golosinas
-cabritas, pop corn de pollo/ palomitas de pollo
-mix de snacks, botana, snack, frutos secos
-nuez, botana, snack, frutos secos
-harina, quinoa
 aji, chile, morron, guindilla, cayena, pimiento, amarillo
-ajo, especias
-ajo en polvo, especias
 pollo ganso, ganzo
-ossobuco, ossobuco
+ossobuco, osobuco
 ron, run
-leche, cero lacto
 stevia, endulzante
 smoothie, batido, smothie, smooty
-aloe vera, cero, sugar free
-energetica, sugar free
-postre helado, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
-fideos, pasta
-bretzel, pan bretsel, brezet
+bretzel, bretsel, brezet
 cigarrillos, cigarros
 plasticina, plastilina
-pulpa de fruta, pure de pulpa
-manjar, manjar
-cerveza, desalcoholizado
-leche, leche colun chocolate sin lactosa treta, leche chocolate colun tetrapak de litro
-pan de molde, panes, pan, pan integral
-maizena, maizena
-romero, hierbas, especias
 porotos, frijol, frijoles, poroto
-provenza, hierbas, especias
-hummus, pasta, pure
-bebida vegetal, soja
-salchichon cerveza, jamon, jamones
-salsa bolognesa, salsa bolonesa
-jugo en polvo, refresco, sumo, zumo, libre de azucar, 0% azucar
-jugo en polvo, refresco, sumo, zumo, guesillo, libre de azucar, 0% azucar
+bolognesa, bolonesa
+jugo en polvo, sumo, zumo
 arvejas, arverjas, aberjas, arberjas
-ciruela, sin carozo, deshidratadas
 banana, platanos
-mantequilla, kumey
-pina, tarro, frasco, lata
-pasas, botana, snack, frutos secos
-datiles, sin carozo, deshidratadas
-kiwi, frutos secos
-nuez, frutos secos
-clavo de olor, especias
-kummel, especias
-jalea, mermelada, confit, confitura
-mantequilla, quillalles, quiyayes
-sopa, ramen
-fideos, ramen
-nugguets, nagets de pollo, nugets de pollo
-mani, cacahate, cacahuete, frutos secos
-coco, botana, snack, frutos secos
+quillalles, quiyayes
+nugguets, nagets, nugets
 encendedor, encendedores, mechero
-tomillo, hierbas, especias
-bruschetta, pote
-oregano, hierbas, especias
-corchetera s-127, engrapadora
-bebida, cero,gaseosa, soda, refresco
+corchetera, engrapadora
+bebida, gaseosa, soda, refresco
 empanada, soja
-espumante, desalcholizado, cero alcohol, zero alchol, champagne, champana, sidra
-caramelo, tik tak, snack, golosinas, dulces
 dulce de menta, snack, golosinas, dulces
 chancaca, azucar
-azucar, morena
-cranberries, botana, snack, frutos secos
-ciruela, botana, snack, frutos secos
 helado, sorbete, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
 abastero, avastero
-dona, donuts, donut, bradenmaster
-croissant, media luna, bradenmaster
+dona, donuts, donut
 punta de ganso, ganzo
 pollo, tuto de pollo
 amapolas, amalopas
-galletas, obleas, barquillo, galleta, botana, snack
 pan copihue, pan copihue, pan de hot dog, pan copigue, pan hoc tog, pan hotdog, hotdog, hot dog
-oblea, galleta, botana, snack
-cassata, caja
-cereales, arroz inflado
+oblea, galleta, botana
 porotos negros, frijol, frijoles, poroto
-lentejas, legumbres
 maiz, cabritas, pop corn
-avellanas, frutos secos
 callampas, champinones, hongo, callampas secas
-castanas, frutos secos
-pizza, a la piedra
 toalla femenina, toallas higienicas
 rabanitos, ravanitos, rabanos
 papaya, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
