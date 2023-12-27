@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 
 from devtools import debug
 
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, RequestError
 from elasticsearch.helpers import bulk
 
 from search.utils import auth_decorator, build_doc, transform_json_list
@@ -420,8 +420,8 @@ class MultiSearchView(View):
             }
         try:
             response_store = es.search(index='store_products', body=query_stores)
-        except Exception as e:
-            print("errors ", e.errors)
+        except RequestError as e:
+            print("errors ", e)
         documents_store_products = []
         for hit in response_store["hits"]["hits"]:
             documents_store_products.append(hit["_source"])
