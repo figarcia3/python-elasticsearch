@@ -419,11 +419,11 @@ class MultiSearchView(View):
             }
             }
         try:
-            response = es.search(index='store_products', body=query_stores)
+            response_store = es.search(index='store_products', body=query_stores)
         except:
-            print("errors ", response)
+            print("errors ", response_store)
         documents_store_products = []
-        for hit in response["hits"]["hits"]:
+        for hit in response_store["hits"]["hits"]:
             documents_store_products.append(hit["_source"])
 
         return JsonResponse({"products": documents_products, "store_products": documents_store_products}, safe=False, status=200)
