@@ -420,8 +420,8 @@ class MultiSearchView(View):
             }
         try:
             response_store = es.search(index='store_products', body=query_stores)
-        except:
-            print("errors ", response_store)
+        except Exception as e:
+            print("errors ", e)
         documents_store_products = []
         for hit in response_store["hits"]["hits"]:
             documents_store_products.append(hit["_source"])
