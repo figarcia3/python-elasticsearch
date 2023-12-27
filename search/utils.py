@@ -2,7 +2,7 @@ from django.conf import settings
 from functools import wraps
 
 
-def transform_json_list(json_list, index_name, mappings):
+def transform_json_list(json_list, index_name, mappings, id_name):
     transformed_list = []
     for input_json in json_list:
         source_data = {}
@@ -11,7 +11,7 @@ def transform_json_list(json_list, index_name, mappings):
 
         transformed_json = {
             "_index": index_name,
-            "_id": input_json["eanid"],
+            "_id": input_json[id_name],
             "_source": source_data
         }
 

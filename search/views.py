@@ -410,7 +410,7 @@ class AddDocumentsView(View):
         mappings_list = mappings[index_name]['mappings']['properties'].keys()
 
         body = json.loads(request.body)
-        body = transform_json_list(body, index_name, mappings_list)
+        body = transform_json_list(body, index_name, mappings_list, "eanid" if "eanid" in mappings_list else "id")
 
         response = bulk(es, body)
         return JsonResponse(response, safe=False, status=200)
