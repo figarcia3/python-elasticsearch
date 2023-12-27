@@ -394,7 +394,7 @@ class MultiSearchView(View):
             }
         }
         
-        response = es.search(index='products', body=query_stores)
+        response = es.search(index='store_products', body=query_stores)
         documents_store_products = []
         for hit in response["hits"]["hits"]:
             documents_store_products.append(hit["_source"])
