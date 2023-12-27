@@ -175,6 +175,231 @@ class SearchView(View):
             documents.append(hit["_source"])
         return JsonResponse(documents, safe=False, status=200)
 
+@method_decorator(csrf_exempt, name='dispatch')
+class MultiSearchView(View):
+
+    @auth_decorator
+    def get(self, request):
+        search_term = self.request.GET.get('q')
+        query_products = {
+            "query": {
+                "function_score": {
+                    "query": {
+                        "bool": {
+                            "should": [
+                                {'nested': {
+                                    'path': 'product_name',
+                                    'query': {
+                                        "bool": {
+                                            "should": [
+                                                {"match": {
+                                                    "product_name.name": {"query": search_term, "boost": 1}}}]}}}},
+                                {'nested': {
+                                    'path': 'brand',
+                                    'query': {
+                                        "bool": {
+                                            "should": [
+                                                {"match": {
+                                                    "brand.name": {"query": search_term, "boost": 1}}}]}}}},
+                                {"match": {"variety_name": {
+                                    "query": search_term, "boost": 1}}},
+                                {"match": {"quantity": {"query": search_term, "boost": 1}}},
+                                {'nested': {
+                                    'path': 'measure_unit',
+                                    'query': {
+                                        "bool": {
+                                            "should": [
+                                                {"match": {
+                                                    "measure_unit.name": {"query": search_term, "boost": 1}}}]}}}},
+                            ]
+                        }
+                    },
+                    "boost": 3,
+                    "functions": [
+                        {
+                            "filter": {'nested': {
+                                'path': 'product_class',
+                                'query': {"match": {"product_class.id": "W"}}}},
+                            "weight": 5
+                        },
+                        {
+                            "filter": {'nested': {
+                                'path': 'product_class',
+                                'query': {"match": {"product_class.id": "V"}}}},
+                            "weight": 5
+                        },
+                        {
+                            "filter": {'nested': {
+                                'path': 'product_class',
+                                'query': {"match": {"product_class.id": "U"}}}},
+                            "weight": 1
+                        },
+                        {
+                            "filter": {'nested': {
+                                'path': 'product_class',
+                                'query': {"match": {"product_class.id": "C"}}}},
+                            "weight": 1
+                        }
+                    ],
+                    "score_mode": "multiply",
+                    "boost_mode": "multiply",
+                }
+            }
+        }
+        response = es.search(index='products', body=query_products)
+        documents_products = []
+        for hit in response["hits"]["hits"]:
+            documents_products.append(hit["_source"])
+
+        query_stores = {
+            "query": {
+                "function_score": {
+                "query": {
+                    "bool": {
+                    "should": [
+                        {
+                        "nested": {
+                            "path": "product.product_name",
+                            "query": {
+                            "bool": {
+                                "should": [
+                                {
+                                    "match": {
+                                    "product.product_name.name": {
+                                        "query": "search_term",
+                                        "boost": 1
+                                    }
+                                    }
+                                }
+                                ]
+                            }
+                            }
+                        }
+                        },
+                        {
+                        "nested": {
+                            "path": "product.brand",
+                            "query": {
+                            "bool": {
+                                "should": [
+                                {
+                                    "match": {
+                                    "product.brand.name": {
+                                        "query": "search_term",
+                                        "boost": 1
+                                    }
+                                    }
+                                }
+                                ]
+                            }
+                            }
+                        }
+                        },
+                        {
+                        "match": {
+                            "product.variety_name": {
+                            "query": "search_term",
+                            "boost": 1
+                            }
+                        }
+                        },
+                        {
+                        "match": {
+                            "product.quantity": {
+                            "query": "search_term",
+                            "boost": 1
+                            }
+                        }
+                        },
+                        {
+                        "nested": {
+                            "path": "product.measure_unit",
+                            "query": {
+                            "bool": {
+                                "should": [
+                                {
+                                    "match": {
+                                    "product.measure_unit.name": {
+                                        "query": "search_term",
+                                        "boost": 1
+                                    }
+                                    }
+                                }
+                                ]
+                            }
+                            }
+                        }
+                        }
+                    ]
+                    }
+                },
+                "boost": 3,
+                "functions": [
+                    {
+                    "filter": {
+                        "nested": {
+                        "path": "product.product_class",
+                        "query": {
+                            "match": {
+                            "product.product_class.id": "W"
+                            }
+                        }
+                        }
+                    },
+                    "weight": 5
+                    },
+                    {
+                    "filter": {
+                        "nested": {
+                        "path": "product.product_class",
+                        "query": {
+                            "match": {
+                            "product.product_class.id": "V"
+                            }
+                        }
+                        }
+                    },
+                    "weight": 5
+                    },
+                    {
+                    "filter": {
+                        "nested": {
+                        "path": "product.product_class",
+                        "query": {
+                            "match": {
+                            "product.product_class.id": "U"
+                            }
+                        }
+                        }
+                    },
+                    "weight": 1
+                    },
+                    {
+                    "filter": {
+                        "nested": {
+                        "path": "product.product_class",
+                        "query": {
+                            "match": {
+                            "product.product_class.id": "C"
+                            }
+                        }
+                        }
+                    },
+                    "weight": 1
+                    }
+                ],
+                "score_mode": "multiply",
+                "boost_mode": "multiply"
+                }
+            }
+        }
+        
+        response = es.search(index='products', body=query_stores)
+        documents_store_products = []
+        for hit in response["hits"]["hits"]:
+            documents_store_products.append(hit["_source"])
+
+        return JsonResponse({"products": documents_products, "store_products": documents_store_products}, safe=False, status=200)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class AddDocumentsView(View):
