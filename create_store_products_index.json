@@ -22,7 +22,8 @@
     "mappings": {
         "properties": {
             "id": {
-                "type": "keyword"
+                "type": "text",
+                "analizer": "standard"
             },
             "product": {
                 "type": "nested",

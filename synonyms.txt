@@ -157,7 +157,7 @@ vino, ensamblaje
 fideos, fideos, pasta
 tintura, tinte
 acondicionador, balsamo
-duraznos, melocoton, alberchigo, abridor, fresquilla, pavia, nectarina
+duraznos, melocoton, alberchigo, abridor, fresquilla, pavia, nectarina, durazno
 servilleta, avolengo
 pure de frutas, colado
 te, infusion

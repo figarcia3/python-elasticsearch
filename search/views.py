@@ -8,7 +8,7 @@ from devtools import debug
 
 from elasticsearch import Elasticsearch, RequestError
 from elasticsearch.helpers import bulk
-from search.queries import products_query, store_products_query
+from search.queries import numeric_products_query, products_query, store_products_query
 
 from search.utils import auth_decorator, build_doc, extract_number_token_from_query, transform_json_list
 
@@ -78,7 +78,7 @@ class DocumentShowView(View):
     @auth_decorator
     def get(self, request, index_name, id):
         response = es.get(index=index_name, id=id)
-        doc = build_doc(response.body)
+        doc = build_doc(response.body, "eanid" if "products" == index_name else "id")
         return JsonResponse(doc, safe=False, status=200)
 
     @auth_decorator
@@ -121,14 +121,20 @@ class MultiSearchView(View):
         store = self.request.GET.get('store')
 
         query_products = products_query(search_term)
+        query_stores = store_products_query(search_term, store)
+        if search_term.isnumeric():
+            query_products = numeric_products_query(search_term)
+            query_stores = store_products_query(search_term, store)
+
         response = es.search(index='products', body=query_products)
         documents_products = []
         for hit in response["hits"]["hits"]:
             documents_products.append(hit["_source"])
 
-        query_stores = store_products_query(search_term, store)
+        
         response_store = es.search(index='store_products', body=query_stores)
         documents_store_products = []
+
         for hit in response_store["hits"]["hits"]:
             documents_store_products.append(hit["_source"])
 
@@ -141,9 +147,6 @@ class AddDocumentsView(View):
     def post(self, request, index_name):
         mappings = es.indices.get_mapping(index=index_name)
         mappings_list = mappings[index_name]['mappings']['properties'].keys()
-
-
-        print(mappings_list)
 
         body = json.loads(request.body)
         body = transform_json_list(body, index_name, mappings_list, "eanid" if "eanid" in mappings_list else "id")

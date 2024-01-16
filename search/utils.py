@@ -20,9 +20,9 @@ def transform_json_list(json_list, index_name, mappings, id_name):
     return transformed_list
 
 
-def build_doc(source):
+def build_doc(source, id_name="id"):
     doc = source["_source"]
-    doc["eanid"] = source["_id"]
+    doc[id_name] = source["_id"]
     return doc
 
 

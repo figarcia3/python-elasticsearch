@@ -21,7 +21,7 @@ def products_query(search_term):
                                             "match": {
                                                 "product_name.name": {
                                                     "query": search_term,
-                                                    "boost": 1
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -34,7 +34,7 @@ def products_query(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 1
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -144,7 +144,7 @@ def products_query(search_term):
                                             "match": {
                                                 "product_name.name": {
                                                     "query": search_term,
-                                                    "boost": 1
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -157,7 +157,7 @@ def products_query(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 1
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -276,7 +276,7 @@ def store_products_query(search_term, store):
                                                     "match": {
                                                         "product.product_name.name": {
                                                             "query": search_term,
-                                                            "boost": 1
+                                                            "boost": 2
                                                         }
                                                     }
                                                 }
@@ -294,7 +294,7 @@ def store_products_query(search_term, store):
                                                     "match": {
                                                         "product.brand.name": {
                                                             "query": search_term,
-                                                            "boost": 1
+                                                            "boost": 2
                                                         }
                                                     }
                                                 }
@@ -447,7 +447,7 @@ def store_products_query(search_term, store):
                                                         "match": {
                                                             "product.product_name.name": {
                                                                 "query": search_term,
-                                                                "boost": 1
+                                                                "boost": 2
                                                             }
                                                         }
                                                     }
@@ -465,7 +465,7 @@ def store_products_query(search_term, store):
                                                         "match": {
                                                             "product.brand.name": {
                                                                 "query": search_term,
-                                                                "boost": 1
+                                                                "boost": 2
                                                             }
                                                         }
                                                     }
@@ -589,4 +589,46 @@ def store_products_query(search_term, store):
 
     
     return query_stores
-        
+
+def numeric_products_query(eanid):
+     return {
+        "query": {
+            "query_string":{  
+                "default_field": "eanid",
+                "query": f"*{eanid}*"
+            }
+        }
+    }
+
+def numeric_store_products_query(eanid, store):
+    return {
+        "query": {
+            "bool": {
+                "must": {
+                    "term": {
+                        "store": store
+                    }
+                },
+                "should": [
+                    {
+                        "nested": {
+                            "path": "product",
+                            "query": {
+                                    "query_string": {  
+                                        "default_field": "product.eanid",
+                                        "query": f"*{eanid}*"
+                                    }
+                                }
+                            }
+                    },
+                    {
+                        "query": {
+                            "term":    {
+                                "internal_code": eanid
+                            }
+                        }
+                    },
+                ],
+            },
+        }
+    }

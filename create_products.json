@@ -22,7 +22,8 @@
     "mappings": {
         "properties": {
             "eanid": {
-                "type": "keyword"
+                "type": "text",
+                "analizer": "standard"
             },
             "product_name": {
                 "type": "nested",
