@@ -318,10 +318,10 @@ def store_products_query(search_term, store):
                                     "nested": {
                                         "path": "product",
                                         "query": {'nested': {
-                        'path': 'measure_unit',
-                        'query': {
+                                            'path': 'product.measure_unit',
+                                            'query': {
                                                     "match": {
-                                                        "measure_unit.name": {
+                                                        "product.measure_unit.name": {
                                                             "query": search_term,
                                                             "boost": 1
                                                         }
@@ -489,10 +489,10 @@ def store_products_query(search_term, store):
                                         "nested": {
                                             "path": "product",
                                             "query": {'nested': {
-                                        'path': 'product.measure_unit',
-                                        'query': {
+                                                'path': 'product.measure_unit',
+                                                'query': {
                                                         "match": {
-                                                            "measure_unit.name": {
+                                                            "product.measure_unit.name": {
                                                                 "query": search_term,
                                                                 "boost": 1
                                                             }
