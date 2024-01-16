@@ -441,12 +441,15 @@ class AddDocumentsView(View):
         mappings = es.indices.get_mapping(index=index_name)
         mappings_list = mappings[index_name]['mappings']['properties'].keys()
 
+
+        print(mappings_list)
+
         body = json.loads(request.body)
         body = transform_json_list(body, index_name, mappings_list, "eanid" if "eanid" in mappings_list else "id")
 
         try:
             response = bulk(es, body)
         except BulkIndexError as e:
-            print("errors", e.errors)
+            print("ERRORS: ", e.errors)
             response = {}
         return JsonResponse(response, safe=False, status=200)
