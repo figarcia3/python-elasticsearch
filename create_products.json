@@ -1,0 +1,229 @@
+{
+    "settings": {
+        "analysis": {
+            "filter": {
+                "my_synonym_filter": {
+                    "type": "synonym",
+                    "synonyms_path": "synonyms.txt"
+                }
+            },
+            "analyzer": {
+                "my_synonyms": {
+                    "tokenizer": "standard",
+                    "filter": [
+                        "lowercase",
+                        "my_synonym_filter"
+                    ]
+                }
+            }
+        }
+    },
+    "name": "products",
+    "mappings": {
+        "properties": {
+            "eanid": {
+                "type": "keyword"
+            },
+            "product_name": {
+                "type": "nested",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "tax": {
+                        "type": "nested",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "text",
+                                "analyzer": "standard"
+                            },
+                            "zone": {
+                                "type": "keyword"
+                            },
+                            "rate": {
+                                "type": "float"
+                            }
+                        }
+                    },
+                    "name": {
+                        "type": "text",
+                        "analyzer": "my_synonyms"
+                    },
+                    "alternative_names": {
+                        "type": "text",
+                        "analyzer": "standard"
+                    }
+                }
+            },
+            "product_class": {
+                "type": "nested",
+                "properties": {
+                    "id": {
+                        "type": "keyword"
+                    },
+                    "name": {
+                        "type": "text",
+                        "analyzer": "standard"
+                    },
+                    "observation": {
+                        "type": "text",
+                        "analyzer": "standard"
+                    }
+                }
+            },
+            "package": {
+                "type": "nested",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "text",
+                        "analyzer": "standard"
+                    },
+                    "short_name": {
+                        "type": "text",
+                        "analyzer": "standard"
+                    },
+                    "units": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "measure_unit": {
+                "type": "nested",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "text",
+                        "analyzer": "standard"
+                    }
+                }
+            },
+            "enterprise": {
+                "type": "nested",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "text",
+                        "analyzer": "standard"
+                    },
+                    "type": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text",
+                        "analyzer": "standard"
+                    },
+                    "email": {
+                        "type": "keyword"
+                    },
+                    "phone": {
+                        "type": "keyword"
+                    },
+                    "url": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "category": {
+                "type": "nested",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "text",
+                        "analyzer": "my_synonyms"
+                    },
+                    "image": {
+                        "type": "keyword"
+                    },
+                    "parent": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "brand": {
+                "type": "nested",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "text",
+                        "analyzer": "my_synonyms"
+                    }
+                }
+            },
+            "user": {
+                "type": "keyword"
+            },
+            "lsean": {
+                "type": "keyword"
+            },
+            "variety_name": {
+                "type": "text",
+                "analyzer": "standard"
+            },
+            "description": {
+                "type": "text"
+            },
+            "create_description": {
+                "type": "text"
+            },
+            "picking_advise": {
+                "type": "text"
+            },
+            "quantity": {
+                "type": "float"
+            },
+            "volume": {
+                "type": "float"
+            },
+            "weight": {
+                "type": "float"
+            },
+            "image": {
+                "type": "keyword"
+            },
+            "thumbnail": {
+                "type": "keyword"
+            },
+            "status": {
+                "type": "boolean"
+            },
+            "src": {
+                "type": "keyword"
+            },
+            "created_at": {
+                "type": "date"
+            },
+            "updated_at": {
+                "type": "date"
+            },
+            "deleted": {
+                "type": "boolean"
+            },
+            "deleted_at": {
+                "type": "date"
+            },
+            "manufacturer": {
+                "type": "nested"
+            },
+            "importer": {
+                "type": "nested"
+            },
+            "product_included": {
+                "type": "nested"
+            }
+        }
+    }
+}

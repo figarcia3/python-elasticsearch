@@ -41,3 +41,19 @@ def auth_decorator(func):
             raise PermissionError("Invalid API Key")
         return func(*args, **kwargs)
     return func_wrapper
+
+
+def extract_number_token_from_query(query):
+    tokens = query.split(" ")
+    number_tokens = []
+    for token in tokens:
+        if is_digit(token):
+            number_tokens.append(token)
+    return number_tokens
+
+def is_digit(token):
+    try:
+        int(token)
+        return True
+    except ValueError:
+        return False
