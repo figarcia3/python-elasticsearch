@@ -260,88 +260,86 @@ class MultiSearchView(View):
                     "path": "product",
                     "query": {
                         "bool": {
-                        "must": [
-                            {
+                            "filter": {
                                 "term": {
                                     "store": store
                                 }
-                            }
-                        ],
-                        "should": [
-                            {
-                            "nested": {
-                                "path": "product.product_name",
-                                "query": {
-                                "bool": {
-                                    "should": [
-                                    {
-                                        "match": {
-                                        "product.product_name.name": {
-                                            "query": search_term,
-                                            "boost": 1
+                            },
+                            "should": [
+                                {
+                                "nested": {
+                                    "path": "product.product_name",
+                                    "query": {
+                                    "bool": {
+                                        "should": [
+                                        {
+                                            "match": {
+                                            "product.product_name.name": {
+                                                "query": search_term,
+                                                "boost": 1
+                                            }
+                                            }
+                                        }
+                                        ]
+                                    }
+                                    }
+                                }
+                                },
+                                {
+                                "nested": {
+                                    "path": "product.brand",
+                                    "query": {
+                                    "bool": {
+                                        "should": [
+                                        {
+                                            "match": {
+                                            "product.brand.name": {
+                                                "query": search_term,
+                                                "boost": 1
+                                            }
+                                            }
+                                        }
+                                        ]
+                                    }
+                                    }
+                                }
+                                },
+                                {
+                                "match": {
+                                    "product.variety_name": {
+                                    "query": search_term,
+                                    "boost": 1
+                                    }
+                                }
+                                },
+                                # {
+                                # "match": {
+                                #     "product.quantity": {
+                                #     "query": search_term,
+                                #     "boost": 1
+                                #     }
+                                # }
+                                # },
+                                {
+                                "nested": {
+                                        "path": "product.measure_unit",
+                                        "query": {
+                                        "bool": {
+                                            "should": [
+                                            {
+                                                "match": {
+                                                "product.measure_unit.name": {
+                                                    "query": search_term,
+                                                    "boost": 1
+                                                }
+                                                }
+                                            }
+                                            ]
                                         }
                                         }
                                     }
-                                    ]
                                 }
-                                }
-                            }
-                            },
-                            {
-                            "nested": {
-                                "path": "product.brand",
-                                "query": {
-                                "bool": {
-                                    "should": [
-                                    {
-                                        "match": {
-                                        "product.brand.name": {
-                                            "query": search_term,
-                                            "boost": 1
-                                        }
-                                        }
-                                    }
-                                    ]
-                                }
-                                }
-                            }
-                            },
-                            {
-                            "match": {
-                                "product.variety_name": {
-                                "query": search_term,
-                                "boost": 1
-                                }
-                            }
-                            },
-                            # {
-                            # "match": {
-                            #     "product.quantity": {
-                            #     "query": search_term,
-                            #     "boost": 1
-                            #     }
-                            # }
-                            # },
-                            {
-                            "nested": {
-                                "path": "product.measure_unit",
-                                "query": {
-                                "bool": {
-                                    "should": [
-                                    {
-                                        "match": {
-                                        "product.measure_unit.name": {
-                                            "query": search_term,
-                                            "boost": 1
-                                        }
-                                        }
-                                    }
-                                    ]
-                                }
-                                }
-                            }
-                            }
-                        ]
+                            ]
                         }
                     }
                     }
