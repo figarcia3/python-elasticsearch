@@ -181,6 +181,7 @@ class MultiSearchView(View):
     @auth_decorator
     def get(self, request):
         search_term = self.request.GET.get('q')
+        store = self.request.GET.get('store')
         query_products = {
             "query": {
                 "function_score": {
@@ -259,6 +260,13 @@ class MultiSearchView(View):
                     "path": "product",
                     "query": {
                         "bool": {
+                        "must": [
+                            {
+                                "term": {
+                                    "store": store
+                                }
+                            }
+                        ],
                         "should": [
                             {
                             "nested": {
@@ -418,10 +426,6 @@ class MultiSearchView(View):
                 }
             }
             }
-        # try:
-        #     response_store = es.search(index='store_products', body=query_stores)
-        # except RequestError as e:
-        #     print("errors ", e.info)
         response_store = es.search(index='store_products', body=query_stores)
         documents_store_products = []
         for hit in response_store["hits"]["hits"]:
