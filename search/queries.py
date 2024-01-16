@@ -612,19 +612,10 @@ def numeric_store_products_query(eanid, store):
                             },
                         },
                         {
-                            "exists": {
-                                "field": "internal_code"
-                            }
+                            "term":    {
+                                "internal_code": int(eanid)
+                            } 
                         }
-                    ],
-                    "should": [
-                        {
-                            "query": {
-                                "term":    {
-                                    "internal_code": int(eanid)
-                                }
-                            }
-                        },
                     ],
                 },
             }
@@ -639,19 +630,19 @@ def numeric_store_products_query(eanid, store):
                                 "store": store
                             },
                         },
-                    ],
-                    "should": [
                         {
-                            "nested": {
-                                "path": "product",
-                                "query": {
-                                        "query_string": {  
-                                            "default_field": "product.eanid",
-                                            "query": f"*{eanid}*"
+                            {
+                                "nested": {
+                                    "path": "product",
+                                    "query": {
+                                            "query_string": {  
+                                                "default_field": "product.eanid",
+                                                "query": f"*{eanid}*"
+                                            }
                                         }
                                     }
-                                }
-                        },
+                            }, 
+                        }
                     ],
                 },
             }
