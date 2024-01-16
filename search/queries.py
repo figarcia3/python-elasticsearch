@@ -601,34 +601,58 @@ def numeric_products_query(eanid):
     }
 
 def numeric_store_products_query(eanid, store):
-    return {
-        "query": {
-            "bool": {
-                "must": {
-                    "term": {
-                        "store": store
-                    }
-                },
-                "should": [
-                    {
-                        "nested": {
-                            "path": "product",
-                            "query": {
-                                    "query_string": {  
-                                        "default_field": "product.eanid",
-                                        "query": f"*{eanid}*"
-                                    }
-                                }
-                            }
-                    },
-                    {
-                        "query": {
-                            "term":    {
-                                "internal_code": int(eanid)
+    if len(eanid)<8:
+        return {
+            "query": {
+                "bool": {
+                    "must": [
+                        {
+                            "term": {
+                                "store": store
+                            },
+                        },
+                        {
+                            "exists": {
+                                "field": "internal_code"
                             }
                         }
-                    },
-                ],
-            },
+                    ],
+                    "should": [
+                        {
+                            "query": {
+                                "term":    {
+                                    "internal_code": int(eanid)
+                                }
+                            }
+                        },
+                    ],
+                },
+            }
         }
-    }
+    else:
+        return {
+            "query": {
+                "bool": {
+                    "must": [
+                        {
+                            "term": {
+                                "store": store
+                            },
+                        },
+                    ],
+                    "should": [
+                        {
+                            "nested": {
+                                "path": "product",
+                                "query": {
+                                        "query_string": {  
+                                            "default_field": "product.eanid",
+                                            "query": f"*{eanid}*"
+                                        }
+                                    }
+                                }
+                        },
+                    ],
+                },
+            }
+        }
