@@ -314,14 +314,14 @@ class MultiSearchView(View):
                                 }
                             }
                             },
-                            {
-                            "match": {
-                                "product.quantity": {
-                                "query": search_term,
-                                "boost": 1
-                                }
-                            }
-                            },
+                            # {
+                            # "match": {
+                            #     "product.quantity": {
+                            #     "query": search_term,
+                            #     "boost": 1
+                            #     }
+                            # }
+                            # },
                             {
                             "nested": {
                                 "path": "product.measure_unit",
