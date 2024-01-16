@@ -591,6 +591,7 @@ def store_products_query(search_term, store):
     return query_stores
 
 def numeric_products_query(eanid):
+     print('numeric_products_query: ', eanid)
      return {
         "query": {
             "query_string":{  
@@ -601,6 +602,8 @@ def numeric_products_query(eanid):
     }
 
 def numeric_store_products_query(eanid, store):
+    print('numeric_store_products_query: ', eanid)
+    print('numeric_store_products_query: ', store)
     if len(eanid)<8:
         return {
             "query": {

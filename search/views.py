@@ -123,7 +123,6 @@ class MultiSearchView(View):
         query_products = products_query(search_term)
         query_stores = store_products_query(search_term, store)
         if search_term.isnumeric():
-            print('NUMERIC SEARCH')
             query_products = numeric_products_query(search_term)
             query_stores = numeric_store_products_query(search_term, store)
 
