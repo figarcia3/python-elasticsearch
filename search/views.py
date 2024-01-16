@@ -303,7 +303,7 @@ class MultiSearchView(View):
         documents_products = []
         for hit in response["hits"]["hits"]:
             documents_products.append(hit["_source"])
-        print('TESSSTING')
+
         query_stores = {
             "query": {
                 "function_score": {
