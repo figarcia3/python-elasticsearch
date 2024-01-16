@@ -23,7 +23,7 @@
         "properties": {
             "eanid": {
                 "type": "text",
-                "analizer": "standard"
+                "analyzer": "standard"
             },
             "product_name": {
                 "type": "nested",

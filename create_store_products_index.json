@@ -23,7 +23,7 @@
         "properties": {
             "id": {
                 "type": "text",
-                "analizer": "standard"
+                "analyzer": "standard"
             },
             "product": {
                 "type": "nested",

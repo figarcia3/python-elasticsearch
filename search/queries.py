@@ -624,7 +624,7 @@ def numeric_store_products_query(eanid, store):
                     {
                         "query": {
                             "term":    {
-                                "internal_code": eanid
+                                "internal_code": int(eanid)
                             }
                         }
                     },
