@@ -444,5 +444,9 @@ class AddDocumentsView(View):
         body = json.loads(request.body)
         body = transform_json_list(body, index_name, mappings_list, "eanid" if "eanid" in mappings_list else "id")
 
-        response = bulk(es, body)
+        try:
+            response = bulk(es, body)
+        except BulkIndexError as e:
+            print("errors", e.errors)
+            response = {}
         return JsonResponse(response, safe=False, status=200)
