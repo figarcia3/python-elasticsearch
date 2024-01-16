@@ -322,7 +322,7 @@ class MultiSearchView(View):
                                 "nested": {
                                     "path": "product.product_name",
                                     "query": {
-                                        "match_phrase": {
+                                        "match": {
                                             "product.product_name.name": {
                                             "query": search_term,
                                             "boost": 1
@@ -340,7 +340,7 @@ class MultiSearchView(View):
                                 "nested": {
                                     "path": "product.brand",
                                     "query": {
-                                    "match_phrase": {
+                                    "match": {
                                         "product.brand.name": {
                                         "query": search_term,
                                         "boost": 1
@@ -355,7 +355,7 @@ class MultiSearchView(View):
                         "nested": {
                             "path": "product",
                             "query": {
-                            "match_phrase": {
+                            "match": {
                                     "product.variety_name": {
                                     "query": search_term,
                                     "boost": 1
