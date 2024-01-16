@@ -1,4 +1,5 @@
 from search.utils import extract_number_token_from_query
+from decimal import Decimal
 
 
 def products_query(search_term):
@@ -6,7 +7,7 @@ def products_query(search_term):
 
     measure_unit = None
     if len(measure_unit_list) > 0:
-        measure_unit = measure_unit_list[0]
+        measure_unit = Decimal(measure_unit_list[0])
         return {
             "query": {
                 "function_score": {
@@ -253,7 +254,7 @@ def store_products_query(search_term, store):
     measure_unit = None
 
     if len(measure_unit_list) > 0:
-        measure_unit = measure_unit_list[0]
+        measure_unit = Decimal(measure_unit_list[0])
         query_stores = {
             "query": {
                 "function_score": {
