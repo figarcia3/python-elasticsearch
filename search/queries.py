@@ -9,6 +9,7 @@ def products_query(search_term):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         return {
+            "size": 50,
             "query": {
                 "function_score": {
                     "query": {
@@ -132,6 +133,7 @@ def products_query(search_term):
 
     else:
         return {
+            "size": 50,
             "query": {
                 "function_score": {
                     "query": {
@@ -256,6 +258,7 @@ def store_products_query(search_term, store):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         query_stores = {
+            "size": 50,
             "query": {
                 "function_score": {
                     "query": {
@@ -427,6 +430,7 @@ def store_products_query(search_term, store):
         }
     else:
             query_stores = {
+                "size": 50,
                 "query": {
                     "function_score": {
                         "query": {
