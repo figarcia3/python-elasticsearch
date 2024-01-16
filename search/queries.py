@@ -618,7 +618,7 @@ def numeric_store_products_query(eanid, store):
                             "term":    {
                                 "internal_code": int(eanid)
                             } 
-                        }
+                        },
                     ],
                 },
             }
@@ -634,18 +634,16 @@ def numeric_store_products_query(eanid, store):
                             },
                         },
                         {
-                            {
-                                "nested": {
-                                    "path": "product",
-                                    "query": {
-                                            "query_string": {  
-                                                "default_field": "product.eanid",
-                                                "query": f"*{eanid}*"
-                                            }
+                            "nested": {
+                                "path": "product",
+                                "query": {
+                                        "query_string": {  
+                                            "default_field": "product.eanid",
+                                            "query": f"*{eanid}*"
                                         }
                                     }
-                            }, 
-                        }
+                                }
+                        }, 
                     ],
                 },
             }
