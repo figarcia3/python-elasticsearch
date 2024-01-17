@@ -345,6 +345,19 @@ def store_products_query(search_term, store):
                                         }
                                     }
                                 },
+                                {
+                                    "nested": {
+                                        "path": "product",
+                                        "query": {
+                                            "match": {
+                                                "product.create_description": {
+                                                    "query": search_term,
+                                                    "boost": 1
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                             ]
                         }
                     },
@@ -505,6 +518,19 @@ def store_products_query(search_term, store):
                                                     }
                                                 }
                                             },
+                                        }
+                                    },
+                                    {
+                                        "nested": {
+                                            "path": "product",
+                                            "query": {
+                                                "match": {
+                                                    "product.create_description": {
+                                                        "query": search_term,
+                                                        "boost": 1
+                                                    }
+                                                }
+                                            }
                                         }
                                     },
                                 ]

@@ -11,8 +11,17 @@
                 "my_synonyms": {
                     "tokenizer": "standard",
                     "filter": [
+                        "asciifolding",
                         "lowercase",
                         "my_synonym_filter"
+                    ]
+                },
+                "normal": {
+                    "type": "custom",
+                    "tokenizer": "standard",
+                    "filter": [
+                        "asciifolding",
+                        "lowercase"
                     ]
                 }
             }
@@ -55,7 +64,7 @@
                     },
                     "alternative_names": {
                         "type": "text",
-                        "analyzer": "standard"
+                        "analyzer": "normal"
                     }
                 }
             },
@@ -67,11 +76,11 @@
                     },
                     "name": {
                         "type": "text",
-                        "analyzer": "standard"
+                        "analyzer": "normal"
                     },
                     "observation": {
                         "type": "text",
-                        "analyzer": "standard"
+                        "analyzer": "normal"
                     }
                 }
             },
@@ -83,11 +92,11 @@
                     },
                     "name": {
                         "type": "text",
-                        "analyzer": "standard"
+                        "analyzer": "normal"
                     },
                     "short_name": {
                         "type": "text",
-                        "analyzer": "standard"
+                        "analyzer": "normal"
                     },
                     "units": {
                         "type": "integer"
@@ -102,7 +111,7 @@
                     },
                     "name": {
                         "type": "text",
-                        "analyzer": "standard"
+                        "analyzer": "normal"
                     }
                 }
             },
@@ -121,7 +130,7 @@
                     },
                     "description": {
                         "type": "text",
-                        "analyzer": "standard"
+                        "analyzer": "normal"
                     },
                     "email": {
                         "type": "keyword"
@@ -142,7 +151,7 @@
                     },
                     "name": {
                         "type": "text",
-                        "analyzer": "my_synonyms"
+                        "analyzer": "normal"
                     },
                     "image": {
                         "type": "keyword"
@@ -165,14 +174,15 @@
                 }
             },
             "user": {
-                "type": "keyword"
+                "type": "text",
+                "analyzer": "normal"
             },
             "lsean": {
                 "type": "keyword"
             },
             "variety_name": {
                 "type": "text",
-                "analyzer": "standard"
+                "analyzer": "normal"
             },
             "description": {
                 "type": "text"
@@ -217,13 +227,13 @@
                 "type": "date"
             },
             "manufacturer": {
-                "type": "nested"
+                "type": "keyword"
             },
             "importer": {
-                "type": "nested"
+                "type": "keyword"
             },
             "product_included": {
-                "type": "nested"
+                "type": "keyword"
             }
         }
     }

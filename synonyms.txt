@@ -11,7 +11,6 @@ naranja, naranjas
 zapallo, zapallito, zuquini, zukini, zapallos, calabacin, calabacita, zapallito, guicoy
 cigarrillos, pucho, cigarro, cigarros
 palta, paltas
-duraznos, duraznos
 pepino ensalada, pepinos
 muffin, mafin, mufin
 zapallo, zapallos
@@ -156,7 +155,7 @@ vino, ensamblaje
 fideos, fideos, pasta
 tintura, tinte
 acondicionador, balsamo
-duraznos, melocoton, alberchigo, abridor, fresquilla, pavia, nectarina, durazno
+duraznos, melocoton, alberchigo, abridor, fresquilla, pavia, nectarina, durazno, durasnos, durasno
 servilleta, avolengo
 pure de frutas, colado
 te, infusion
@@ -201,3 +200,4 @@ callampas, champinones, hongo, callampas secas
 toalla femenina, toallas higienicas
 rabanitos, ravanitos, rabanos
 papaya, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
+groso, grosso
