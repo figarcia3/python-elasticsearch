@@ -554,7 +554,7 @@ def store_products_query(search_term, store):
                                         }
                                     }
                                 },
-                                "weight": 5
+                                "weight": 3
                             },
                             {
                                 "filter": {
@@ -572,7 +572,7 @@ def store_products_query(search_term, store):
                                         }
                                     }
                                 },
-                                "weight": 5
+                                "weight": 3
                             },
                             {
                                 "filter": {
