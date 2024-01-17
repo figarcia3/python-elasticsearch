@@ -10,13 +10,12 @@ limon, limones
 naranja, naranjas
 zapallo, zapallito, zuquini, zukini, zapallos, calabacin, calabacita, zapallito, guicoy
 cigarrillos, pucho, cigarro, cigarros
-palta, paltas
+palta, paltas, aguacates, aguacate, abacate, avocato
 pepino ensalada, pepinos
 muffin, mafin, mufin
 zapallo, zapallos
 cebolla, cebollas
 palmeras, palmeritas, palmera, palmerita
-palta, paltas, aguacates, aguacate
 dobladitas, dobladita
 palmeras, palmeritas
 manzana, manzanas
@@ -137,7 +136,6 @@ chicle, goma de mascar, goma de masticar
 champinones, seta, xampinyo, champignon
 vino, shiraz
 espumante, espumante, champagne, champana, sidra
-palta, aguacate, abacate, avocato
 shampoo, champu, shampu
 cochayuyo, alga
 arvejas, arverjas, guisante, chicharo
