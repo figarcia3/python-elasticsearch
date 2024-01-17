@@ -259,6 +259,7 @@ def store_products_query(search_term, store):
         measure_unit = Decimal(measure_unit_list[0])
         query_stores = {
             "size": 50,
+            "min_score": 5,
             "query": {
                 "function_score": {
                     "query": {
@@ -444,6 +445,7 @@ def store_products_query(search_term, store):
     else:
             query_stores = {
                 "size": 50,
+                "min_score": 5,
                 "query": {
                     "function_score": {
                         "query": {
