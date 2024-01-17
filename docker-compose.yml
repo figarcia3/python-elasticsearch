@@ -14,8 +14,6 @@ services:
       - "9300:9300"
     environment:
       - xpack.security.enabled=false
-      - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms1g -Xmx1g
   db:
     container_name: db
     image: postgres:14

@@ -1,3 +1,4 @@
 FROM docker.elastic.co/elasticsearch/elasticsearch:8.7.0
-
+ENV discovery.type=single-node
+ENV ES_JAVA_OPTS="-Xms1g -Xmx1g"
 COPY synonyms.txt /usr/share/elasticsearch/config/
