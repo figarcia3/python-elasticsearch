@@ -352,7 +352,7 @@ def store_products_query(search_term, store):
                                             "match": {
                                                 "product.create_description": {
                                                     "query": search_term,
-                                                    "boost": 1
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -527,7 +527,7 @@ def store_products_query(search_term, store):
                                                 "match": {
                                                     "product.create_description": {
                                                         "query": search_term,
-                                                        "boost": 1
+                                                        "boost": 2
                                                     }
                                                 }
                                             }
