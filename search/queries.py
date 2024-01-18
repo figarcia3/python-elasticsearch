@@ -418,10 +418,13 @@ def store_products_query_test(search_term, store):
             "min_score": 7,
             "sort": [
                 {
-                    "product_class.id": {
+                    "product.product_class.id": {
                         "order": "desc",
                         "nested": {
-                            "path": "product.product_class"
+                            "path": "product.product_class",
+                            "nested": {
+                                "path": "product"
+                            }
                         }
                     }
                 },
@@ -538,10 +541,13 @@ def store_products_query_test(search_term, store):
                 "min_score": 7,
                 "sort": [
                     {
-                        "product_class.id": {
+                        "product.product_class.id": {
                             "order": "desc",
                             "nested": {
-                                "path": "product.product_class"
+                                "path": "product.product_class",
+                                "nested": {
+                                    "path": "product"
+                                }
                             }
                         }
                     },
