@@ -8,7 +8,8 @@ def products_query_test(search_term):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         return {
-            "min_score": 7,
+            "size":50,
+            "min_score": 20,
             "sort": [
                 {
                     "product_class.id": {
@@ -87,7 +88,8 @@ def products_query_test(search_term):
 
     else:
         return {
-            "min_score": 7,
+            "size":50,
+            "min_score": 20,
             "sort": [
                 {
                     "product_class.id": {
@@ -415,6 +417,7 @@ def store_products_query_test(search_term, store):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         query_stores = {
+            "size":50,
             "min_score": 20,
             "sort": [
                 {
@@ -538,6 +541,7 @@ def store_products_query_test(search_term, store):
         }
     else:
             query_stores = {
+                "size":50,
                 "min_score": 20,
                 "sort": [
                     {
