@@ -2,7 +2,7 @@ hallulla, ayuya, hayuya, halluya, allulla, alluya, ayulla, hayulla, hallullas
 cocacola, coca cola, coca-cola
 marraqueta, pan frances, pan batido, marraquetas
 tomate, tomates
-platanos, platanos, bananas, guineos, banana
+platanos, platano, bananas, guineos, banana
 bebida, gaseosa, soda, refresco
 empanada, empanadas
 zanahoria, zanahorias
@@ -175,7 +175,6 @@ porotos, frijol, frijoles, poroto
 bolognesa, bolonesa
 jugo en polvo, sumo, zumo
 arvejas, arverjas, aberjas, arberjas
-banana, platanos
 quillalles, quiyayes
 nugguets, nagets, nugets
 encendedor, encendedores, mechero
