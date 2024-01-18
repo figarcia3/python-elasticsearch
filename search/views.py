@@ -158,3 +158,14 @@ class AddDocumentsView(View):
             print("ERRORS: ", e.errors)
             response = {}
         return JsonResponse(response, safe=False, status=200)
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ShowIndexDocuemntCountView(View):
+
+    @auth_decorator
+    def get(self, request, index_name):
+        _refresh = es.indices.refresh(index_name)
+        response = es.cat.count(index_name, params={"format": "json"})
+        print(response)
+        print(response.body)
+        return JsonResponse(response.body, safe=False, status=200)
