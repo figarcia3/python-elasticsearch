@@ -3,6 +3,7 @@ from decimal import Decimal
 
 
 def products_query(search_term):
+    print("products_query")
     measure_unit_list = extract_number_token_from_query(search_term)
 
     measure_unit = None
@@ -251,6 +252,7 @@ def products_query(search_term):
         }
 
 def store_products_query(search_term, store):
+    print("store_products_query")
     measure_unit_list = extract_number_token_from_query(search_term)
 
     measure_unit = None
