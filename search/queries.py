@@ -9,7 +9,7 @@ def products_query_test(search_term):
         measure_unit = Decimal(measure_unit_list[0])
         return {
             "size":50,
-            "min_score": 20,
+            "min_score": 10,
             "sort": [
                 {
                     "product_class.id": {
@@ -89,7 +89,7 @@ def products_query_test(search_term):
     else:
         return {
             "size":50,
-            "min_score": 20,
+            "min_score": 10,
             "sort": [
                 {
                     "product_class.id": {
