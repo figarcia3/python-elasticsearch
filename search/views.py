@@ -163,9 +163,13 @@ class AddDocumentsView(View):
 class ShowIndexDocuemntCountView(View):
 
     @auth_decorator
-    def get(self, request, index_name):
-        _refresh = es.indices.refresh(index=index_name)
-        response = es.cat.count(index=index_name, params={"format": "json"})
-        print(response)
-        print(response.body)
-        return JsonResponse(response.body, safe=False, status=200)
+    def get(self, request):
+        
+        stats = {}
+        indices = es.indices.get_alias(index="*")
+        for i in indices.body:
+            _refresh = es.indices.refresh(index=i)
+            response = es.cat.count(index=i, params={"format": "json"})
+            stats[i] = response.body[0]['count']
+
+        return JsonResponse(stats, safe=False, status=200)

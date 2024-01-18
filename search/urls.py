@@ -8,9 +8,9 @@ urlpatterns = [
     re_path(r"^index/search/$",
             MultiSearchView.as_view()),
     re_path(
-        r"^index/(?P<index_name>[\w-]+)/add-documents/$", AddDocumentsView.as_view()),
+        r"^index/stats/$", ShowIndexDocuemntCountView.as_view()),
     re_path(
-        r"^index/(?P<index_name>[\w-]+)/stats/$", ShowIndexDocuemntCountView.as_view()),
+        r"^index/(?P<index_name>[\w-]+)/add-documents/$", AddDocumentsView.as_view()),
     re_path(r"^index/(?P<index_name>[\w-]+)/$", ShowIndexView.as_view()),
     re_path(r"^index/(?P<index_name>[\w-]+)/search/$",
             SearchView.as_view()),
