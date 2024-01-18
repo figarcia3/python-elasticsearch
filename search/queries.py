@@ -18,6 +18,9 @@ def products_query_test(search_term):
                 }
             ],
             "query": {
+                "function_score": {
+                    {
+                    "query":{
                 "bool": {
                     "should": [
                         {
@@ -73,8 +76,8 @@ def products_query_test(search_term):
                             }
                         },
                     ]
-                }
-            },
+                }}}
+            },},
         }
 
     else:
@@ -88,6 +91,9 @@ def products_query_test(search_term):
                 }
             ],
             "query": {
+                                "function_score": {
+                    {
+                    "query":{
                 "bool": {
                     "should": [
                         {
@@ -139,7 +145,7 @@ def products_query_test(search_term):
                         },
                     ]
                 }
-            },
+            }}}},
         }
 
 def products_query(search_term):
