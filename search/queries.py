@@ -8,8 +8,8 @@ def products_query_test(search_term):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         return {
-            "size":100,
-            "min_score": 20,
+            "min_score": 7,
+            "size": 100,
             "sort": [
                 {
                     "product_class.id": {
@@ -33,7 +33,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "product_name.name": {
                                                     "query": search_term,
-                                                    "boost": 3
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -46,7 +46,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 3
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -81,15 +81,15 @@ def products_query_test(search_term):
                             ]
                         }
                     },
-                    "boost_mode": "multiply"
+                    "boost_mode": "sum"
                 }
             }
         }
 
     else:
         return {
-            "size":100,
-            "min_score": 20,
+            "min_score": 7,
+            "size": 100,
             "sort": [
                 {
                     "product_class.id": {
@@ -113,7 +113,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "product_name.name": {
                                                     "query": search_term,
-                                                    "boost": 3
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -126,7 +126,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 3
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -156,7 +156,7 @@ def products_query_test(search_term):
                             ]
                         }
                     },
-                    "boost_mode": "multiply"
+                    "boost_mode": "sum"
                 }
             }
         }
@@ -417,8 +417,8 @@ def store_products_query_test(search_term, store):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         query_stores = {
-            "size":50,
-            "min_score": 30,
+            "size": 50,
+            "min_score": 20,
             "sort": [
                 {
                     "product.product_class.id": {
@@ -535,14 +535,14 @@ def store_products_query_test(search_term, store):
                             ]
                         }
                     },
-                    "boost_mode": "multiply"
+                    "boost_mode": "sum"
                 }
             }
         }
     else:
             query_stores = {
-                "size":50,
-                "min_score": 30,
+                "size": 50,
+                "min_score": 20,
                 "sort": [
                     {
                         "product.product_class.id": {

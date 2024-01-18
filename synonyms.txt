@@ -1,5 +1,5 @@
 hallulla, ayuya, hayuya, halluya, allulla, alluya, ayulla, hayulla, hallullas
-cocacola, coca cola, coca-cola, coca
+cocacola, coca cola, coca-cola
 marraqueta, pan frances, pan batido, marraquetas
 tomate, tomates
 platanos, platano, bananas, guineos, banana
@@ -71,6 +71,7 @@ ciabatta, chiabata, chapata
 clementina, mandarinas
 jamon sandwich, sanwich
 malvavisco, marshmallow, masmelos
+yogurt, yogour, yogur, yogourt, yogurt
 aceitunas, aceituna
 ketchup, catchup, catsup
 leche, cero
