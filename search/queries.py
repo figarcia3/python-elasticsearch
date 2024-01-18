@@ -10,17 +10,17 @@ def products_query_test(search_term):
         return {
             "size":100,
             "min_score": 10,
-            # "sort": [
-            #     {
-            #         "product_class.id": {
-            #             "order": "desc",
-            #             "nested": {
-            #                 "path": "product_class"
-            #             }
-            #         }
-            #     },
-            #     "_score"
-            # ],
+            "sort": [
+                {
+                    "product_class.id": {
+                        "order": "desc",
+                        "nested": {
+                            "path": "product_class"
+                        }
+                    }
+                },
+                "_score"
+            ],
             "query": {
                 "function_score": {
                     "query": {
@@ -90,17 +90,17 @@ def products_query_test(search_term):
         return {
             "size":100,
             "min_score": 10,
-            # "sort": [
-            #     {
-            #         "product_class.id": {
-            #             "order": "desc",
-            #             "nested": {
-            #                 "path": "product_class"
-            #             }
-            #         }
-            #     },
-            #     "_score"
-            # ],
+            "sort": [
+                {
+                    "product_class.id": {
+                        "order": "desc",
+                        "nested": {
+                            "path": "product_class"
+                        }
+                    }
+                },
+                "_score"
+            ],
             "query": {
                 "function_score": {
                     "query": {
