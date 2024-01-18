@@ -8,7 +8,7 @@ from devtools import debug
 
 from elasticsearch import Elasticsearch, RequestError
 from elasticsearch.helpers import bulk
-from search.queries import numeric_products_query, numeric_store_products_query, products_query, store_products_query
+from search.queries import numeric_products_query, numeric_store_products_query, products_query, products_query_test, store_products_query
 
 from search.utils import auth_decorator, build_doc, extract_number_token_from_query, transform_json_list
 
@@ -120,7 +120,8 @@ class MultiSearchView(View):
         search_term = self.request.GET.get('q')
         store = self.request.GET.get('store')
 
-        query_products = products_query(search_term)
+        # query_products = products_query(search_term)
+        query_products = products_query_test(search_term)
         query_stores = store_products_query(search_term, store)
         if search_term.isnumeric():
             query_products = numeric_products_query(search_term)
