@@ -11,7 +11,7 @@ def products_query_test(search_term):
         return {
             "sort": [
                 {
-                    "product.product_class.id": {"order" : "desc"}
+                    "product_class.id": {"order" : "desc"}
                 }
             ],
             "query": {
