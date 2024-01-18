@@ -164,8 +164,8 @@ class ShowIndexDocuemntCountView(View):
 
     @auth_decorator
     def get(self, request, index_name):
-        _refresh = es.indices.refresh(index_name)
-        response = es.cat.count(index_name, params={"format": "json"})
+        _refresh = es.indices.refresh(index=index_name)
+        response = es.cat.count(index=index_name, params={"format": "json"})
         print(response)
         print(response.body)
         return JsonResponse(response.body, safe=False, status=200)
