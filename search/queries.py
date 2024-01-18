@@ -9,7 +9,7 @@ def products_query_test(search_term):
         measure_unit = Decimal(measure_unit_list[0])
         return {
             "size":100,
-            "min_score": 10,
+            "min_score": 20,
             "sort": [
                 {
                     "product_class.id": {
@@ -81,7 +81,7 @@ def products_query_test(search_term):
                             ]
                         }
                     },
-                    "boost_mode": "sum"
+                    "boost_mode": "multiply"
                 }
             }
         }
@@ -89,7 +89,7 @@ def products_query_test(search_term):
     else:
         return {
             "size":100,
-            "min_score": 10,
+            "min_score": 20,
             "sort": [
                 {
                     "product_class.id": {
@@ -156,7 +156,7 @@ def products_query_test(search_term):
                             ]
                         }
                     },
-                    "boost_mode": "sum"
+                    "boost_mode": "multiply"
                 }
             }
         }
@@ -418,7 +418,7 @@ def store_products_query_test(search_term, store):
         measure_unit = Decimal(measure_unit_list[0])
         query_stores = {
             "size":50,
-            "min_score": 20,
+            "min_score": 30,
             "sort": [
                 {
                     "product.product_class.id": {
@@ -542,7 +542,7 @@ def store_products_query_test(search_term, store):
     else:
             query_stores = {
                 "size":50,
-                "min_score": 20,
+                "min_score": 30,
                 "sort": [
                     {
                         "product.product_class.id": {
