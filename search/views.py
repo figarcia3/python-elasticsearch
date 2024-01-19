@@ -52,7 +52,23 @@ class ShowIndexView(View):
     def delete(self, request, index_name):
         es.indices.delete(index=index_name)
         return JsonResponse({}, status=204)
+    
+@method_decorator(csrf_exempt, name='dispatch')
+class ShowStoreProductIndexView(View):
 
+    @auth_decorator
+    def delete(self, request, store_id):
+        query = {
+                "query": {
+                    "term": {
+                        "store": store_id
+                    }
+                }
+            }
+        es.delete_by_query(
+            index='store_products',
+            body=query)
+        return JsonResponse({}, status=204)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class DocumentIndexView(View):
