@@ -1093,7 +1093,7 @@ def query_products_test_2(search_term):
         {
           "multi_match": {
             "query": search_term,
-            "fields": ["product_name.name^3", "brand.name^2"],
+            "fields": ["product_name.name", "brand.name^2"],
             "type": "cross_fields",
             "minimum_should_match": "50%"
           }
@@ -1104,7 +1104,7 @@ def query_products_test_2(search_term):
             "query": {
               "multi_match": {
                 "query": search_term,
-                "fields": ["product_name.name^3", "brand.name^2"],
+                "fields": ["product_name.name", "brand.name^2"],
                 "type": "cross_fields",
                 "minimum_should_match": "50%"
               }
@@ -1117,7 +1117,7 @@ def query_products_test_2(search_term):
             "query": {
               "multi_match": {
                 "query": search_term,
-                "fields": ["product_name.name^3", "brand.name^2"],
+                "fields": ["product_name.name", "brand.name^2"],
                 "type": "cross_fields",
                 "minimum_should_match": "50%"
               }
