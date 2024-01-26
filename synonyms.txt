@@ -126,6 +126,7 @@ detergente, jabon en polvo
 pastas, pasta, fideos, espagueti
 desodorante, antiranspirante
 alimento perros, comida para perros, pelet, pienso
+yogurt, yogour, yogur, yogourt, yogurt
 dona, donuts, donut
 pilas, d+
 pilas, triple a
@@ -197,6 +198,3 @@ toalla femenina, toallas higienicas
 rabanitos, ravanitos, rabanos
 papaya, papayon, fruta bomba, olocoton, papayo, mamon, lechosa, lechoza
 groso, grosso
-watt's, watts
-royal, royal guard
-cappuccino, capucino, capuccino, cappucino

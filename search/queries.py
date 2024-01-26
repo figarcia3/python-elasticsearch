@@ -9,7 +9,7 @@ def products_query_test(search_term):
         measure_unit = Decimal(measure_unit_list[0])
         return {
             "min_score": 7,
-            "size": 60,
+            "size": 100,
             "sort": [
                 {
                     "product_class.id": {
@@ -46,7 +46,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 5
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -89,7 +89,7 @@ def products_query_test(search_term):
     else:
         return {
             "min_score": 7,
-            "size": 60,
+            "size": 100,
             "sort": [
                 {
                     "product_class.id": {
@@ -126,7 +126,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 5
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -194,7 +194,7 @@ def products_query(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 5
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -318,7 +318,7 @@ def products_query(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 5
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -471,7 +471,7 @@ def store_products_query_test(search_term, store):
                                                     "match": {
                                                         "product.brand.name": {
                                                             "query": search_term,
-                                                            "boost": 5
+                                                            "boost": 2
                                                         }
                                                     }
                                                 }
@@ -526,7 +526,7 @@ def store_products_query_test(search_term, store):
                                             "match": {
                                                 "product.create_description": {
                                                     "query": search_term,
-                                                    "boost": 1
+                                                    "boost": 2
                                                 }
                                             }
                                         }
@@ -542,7 +542,7 @@ def store_products_query_test(search_term, store):
     else:
             query_stores = {
                 "size": 50,
-                "min_score": 5,
+                "min_score": 15,
                 "sort": [
                     {
                         "product.product_class.id": {
@@ -595,7 +595,7 @@ def store_products_query_test(search_term, store):
                                                         "match": {
                                                             "product.brand.name": {
                                                                 "query": search_term,
-                                                                "boost": 5
+                                                                "boost": 2
                                                             }
                                                         }
                                                     }
@@ -640,7 +640,7 @@ def store_products_query_test(search_term, store):
                                                 "match": {
                                                     "product.create_description": {
                                                         "query": search_term,
-                                                        "boost": 1
+                                                        "boost": 2
                                                     }
                                                 }
                                             }
@@ -1029,7 +1029,6 @@ def store_products_query(search_term, store):
 
 def numeric_products_query(eanid):
      return {
-        
         "query": {
             "query_string":{  
                 "default_field": "eanid",
@@ -1083,23 +1082,3 @@ def numeric_store_products_query(eanid, store):
                 },
             }
         }
-    
-
-def products_query_test_2(search_term):
-    return {
-        "sort": [
-            {
-                "product.product_class.id": {
-                    "order": "desc",
-                }
-            },
-            "_score"
-        ],
-         "query": {
-            "combined_fields" : {
-                "query":      search_term,
-                "fields":     [ "product.brand.name", "product.product_name.name"],
-                "operator":   "or"
-            }
-        }
-    }
