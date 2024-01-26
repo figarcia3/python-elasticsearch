@@ -1029,6 +1029,7 @@ def store_products_query(search_term, store):
 
 def numeric_products_query(eanid):
      return {
+        
         "query": {
             "query_string":{  
                 "default_field": "eanid",
@@ -1082,3 +1083,23 @@ def numeric_store_products_query(eanid, store):
                 },
             }
         }
+    
+
+def products_query_test_2(search_term):
+    return {
+        "sort": [
+            {
+                "product.product_class.id": {
+                    "order": "desc",
+                }
+            },
+            "_score"
+        ],
+         "query": {
+            "combined_fields" : {
+                "query":      search_term,
+                "fields":     [ "product.brand.name", "product.product_name.name"],
+                "operator":   "or"
+            }
+        }
+    }

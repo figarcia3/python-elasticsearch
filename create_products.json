@@ -36,6 +36,7 @@
             },
             "product_name": {
                 "type": "nested",
+                "include_in_parent": true,
                 "properties": {
                     "id": {
                         "type": "integer"
@@ -70,6 +71,7 @@
             },
             "product_class": {
                 "type": "nested",
+                "include_in_parent": true,
                 "properties": {
                     "id": {
                         "type": "keyword"
@@ -105,6 +107,7 @@
             },
             "measure_unit": {
                 "type": "nested",
+                "include_in_parent": true,
                 "properties": {
                     "id": {
                         "type": "integer"
@@ -145,6 +148,7 @@
             },
             "category": {
                 "type": "nested",
+                "include_in_parent": true,
                 "properties": {
                     "id": {
                         "type": "integer"
@@ -163,6 +167,7 @@
             },
             "brand": {
                 "type": "nested",
+                "include_in_parent": true,
                 "properties": {
                     "id": {
                         "type": "integer"
