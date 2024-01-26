@@ -46,7 +46,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 5
+                                                    "boost": 3
                                                 }
                                             }
                                         }
@@ -126,7 +126,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 5
+                                                    "boost": 3
                                                 }
                                             }
                                         }
@@ -194,7 +194,7 @@ def products_query(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 5
+                                                    "boost": 3
                                                 }
                                             }
                                         }
@@ -318,7 +318,7 @@ def products_query(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 5
+                                                    "boost": 3
                                                 }
                                             }
                                         }
@@ -471,7 +471,7 @@ def store_products_query_test(search_term, store):
                                                     "match": {
                                                         "product.brand.name": {
                                                             "query": search_term,
-                                                            "boost": 5
+                                                            "boost": 3
                                                         }
                                                     }
                                                 }
@@ -595,7 +595,7 @@ def store_products_query_test(search_term, store):
                                                         "match": {
                                                             "product.brand.name": {
                                                                 "query": search_term,
-                                                                "boost": 5
+                                                                "boost": 3
                                                             }
                                                         }
                                                     }
@@ -704,7 +704,7 @@ def store_products_query(search_term, store):
                                                     "match": {
                                                         "product.brand.name": {
                                                             "query": search_term,
-                                                            "boost": 5
+                                                            "boost": 3
                                                         }
                                                     }
                                                 }
@@ -889,7 +889,7 @@ def store_products_query(search_term, store):
                                                         "match": {
                                                             "product.brand.name": {
                                                                 "query": search_term,
-                                                                "boost": 5
+                                                                "boost": 3
                                                             }
                                                         }
                                                     }
