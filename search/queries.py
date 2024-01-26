@@ -1087,6 +1087,7 @@ def numeric_store_products_query(eanid, store):
 def query_products_test_2(search_term):
      return {
   "query": {
+    "size": 50,
     "bool": {
       "should": [
         {
