@@ -1266,6 +1266,8 @@ def query_products_test_5(search_term):
             "multi_match": {
                 "query": search_term,
                 "fields": ["product_name.name", "brand.name", "variety_name"],
+                "type": "cross_fields",
+                "operator": "and",
             }
         }
     }
