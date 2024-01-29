@@ -1085,47 +1085,58 @@ def numeric_store_products_query(eanid, store):
     
 
 def query_products_test_2(search_term):
-     return {
+     return{
     "size": 50,
-  "query": {
-    "bool": {
-      "should": [
-        {
-          "multi_match": {
-            "query": search_term,
-            "fields": ["product_name.name", "brand.name^2"],
-            "type": "cross_fields",
-            "minimum_should_match": "50%"
-          }
-        },
-        {
-          "nested": {
-            "path": "product_name",
-            "query": {
-              "multi_match": {
-                "query": search_term,
-                "fields": ["product_name.name", "brand.name^2"],
-                "type": "cross_fields",
-                "minimum_should_match": "50%"
-              }
-            },
-          }
-        },
-        {
-          "nested": {
-            "path": "brand",
-            "query": {
-              "multi_match": {
-                "query": search_term,
-                "fields": ["product_name.name", "brand.name^2"],
-                "type": "cross_fields",
-                "minimum_should_match": "50%"
-              }
-            },
-          }
+    "sort": [
+    {
+        "product_class.id": {
+            "order": "desc",
+            "nested": {
+                "path": "product_class"
+            }
         }
-      ],
-      "minimum_should_match": 1
+    },
+    "_score"
+    ],
+    "query": {
+        "bool": {
+        "should": [
+            {
+            "multi_match": {
+                "query": "search_term",
+                "fields": ["product_name.name^2", "brand.name^3", "variety_name"],
+                "type": "cross_fields",
+                "minimum_should_match": "50%"
+            }
+            },
+            {
+            "nested": {
+                "path": "product_name",
+                "query": {
+                "multi_match": {
+                    "query": "search_term",
+                    "fields": ["product_name.name^2", "brand.name^3", "variety_name"],
+                    "type": "cross_fields",
+                    "minimum_should_match": "50%"
+                }
+                },
+            }
+            },
+            {
+            "nested": {
+                "path": "brand",
+                "query": {
+                "multi_match": {
+                    "query": "search_term",
+                    "fields": ["product_name.name^2", "brand.name^3", "variety_name"],
+                    "type": "cross_fields",
+                    "minimum_should_match": "50%"
+                }
+                },
+            }
+            }
+        ],
+        "minimum_should_match": 1
+        }
     }
-  }
-}
+    }
