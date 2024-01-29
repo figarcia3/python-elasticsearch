@@ -30,7 +30,7 @@ kiwi, kiwis
 frutillas, frutilla
 bebida, gaseosa, soda, refresco
 pie, pai, pay
-donas, donuts, donut
+donas, donuts, donut, donut's
 champinones, champinon
 pimenton, pimentones
 helado, sorbete
