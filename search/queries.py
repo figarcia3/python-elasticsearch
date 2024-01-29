@@ -9,7 +9,6 @@ def products_query_test(search_term):
                     "combined_fields" : {
                         "query": search_term,
                         "fields": ["product_name.name", "brand.name", "variety_name"],
-                        "type": "cross_fields",
                     },
                 },
                 "filter": [
@@ -1107,9 +1106,8 @@ def products_query_weight_test(search_term):
                 "bool": {
                 "must":{
                         "combined_fields" : {
-                        "query": search_term,
-                        "fields": ["product_name.name", "brand.name", "variety_name"],
-                        "type": "cross_fields",
+                            "query": search_term,
+                            "fields": ["product_name.name", "brand.name", "variety_name"],
                     },   
                 },
                 "filter": [
