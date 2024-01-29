@@ -4,6 +4,7 @@ from decimal import Decimal
 def products_query_test(search_term):
     return {
         "min_score": 5,
+        "size": 40,
         "query": {
             "bool": {
                 "must":{
@@ -1103,7 +1104,7 @@ def query_products_test_5(search_term):
 
 def products_query_weight_test(search_term):
     return {
-         "min_score": 5,
+        "min_score": 5,
         "query": {
                 "bool": {
                     "must":{
