@@ -3,6 +3,7 @@ from decimal import Decimal
 
 def products_query_test(search_term):
     return {
+        "min_score": 5,
         "query": {
             "bool": {
                 "must":{
@@ -14,12 +15,12 @@ def products_query_test(search_term):
                 "filter": [
                     {
                         "nested": {
-                        "path": "product_class",
-                        "query": {
-                                "terms": {
-                                    "product_class.id": ["U", "C"]
+                            "path": "product_class",
+                            "query": {
+                                    "terms": {
+                                        "product_class.id": ["U", "C"]
+                                    }
                                 }
-                            }
                         }
                     }
                 ]
@@ -1102,26 +1103,27 @@ def query_products_test_5(search_term):
 
 def products_query_weight_test(search_term):
     return {
+         "min_score": 5,
         "query": {
                 "bool": {
-                "must":{
-                        "combined_fields" : {
-                            "query": search_term,
-                            "fields": ["product_name.name", "brand.name", "variety_name"],
-                    },   
-                },
-                "filter": [
-                    {
-                        "nested": {
-                        "path": "product_class",
-                        "query": {
-                            "terms": {
-                            "product_class.id": ["W", "V"]
+                    "must":{
+                            "combined_fields" : {
+                                "query": search_term,
+                                "fields": ["product_name.name", "brand.name", "variety_name"],
+                        },
+                    },
+                    "filter": [
+                        {
+                            "nested": {
+                            "path": "product_class",
+                                "query": {
+                                    "terms": {
+                                    "product_class.id": ["W", "V"]
+                                    }
+                                }
                             }
                         }
-                        }
-                    }
-                ]
+                    ]
                 }
         }
     }
