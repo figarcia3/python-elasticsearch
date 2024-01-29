@@ -1250,24 +1250,37 @@ def query_products_test_4(search_term):
 
 def query_products_test_5(search_term):
     return {
-    "size": 50,
-    "sort": [
-        {
-            "product_class.id": {
-                "order": "desc",
-                "nested": {
-                    "path": "product_class"
-                }
-            }
-        },
-        "_score"
-    ],
+    # "size": 50,
+    # "sort": [
+    #     {
+    #         "product_class.id": {
+    #             "order": "desc",
+    #             "nested": {
+    #                 "path": "product_class"
+    #             }
+    #         }
+    #     },
+    #     "_score"
+    # ],
     "query": {
-            "multi_match": {
-                "query": search_term,
-                "fields": ["product_name.name", "brand.name", "variety_name"],
-                "type": "cross_fields",
-                "operator": "and",
+            "dis_max": {
+                "queries": [
+                        {
+                            "multi_match": {
+                                "query": search_term,
+                                "fields": ["product_name.name", "brand.name", "variety_name"],
+                                "type": "cross_fields",
+                                "minimum_should_match": "50%",
+                            }
+                        },
+                        {
+                            "multi_match" : {
+                                "query":      search_term,
+                                "type":       "cross_fields",
+                                "fields":     [ "*.edge" ]
+                            }
+                        }
+                    ]
             }
         }
     }
