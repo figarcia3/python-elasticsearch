@@ -149,15 +149,14 @@ class MultiSearchView(View):
             query_products = numeric_products_query(search_term)
             query_stores = numeric_store_products_query(search_term, store)
 
+        documents_products = []
         response = es.search(index='products', body=query_weights)
 
-        documents_products = []
         for hit in response["hits"]["hits"]:
             documents_products.append(hit["_source"])
 
         response = es.search(index='products', body=query_products)
 
-        documents_products = []
         for hit in response["hits"]["hits"]:
             documents_products.append(hit["_source"])
 
