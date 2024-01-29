@@ -1207,60 +1207,52 @@ def query_products_test_4(search_term):
             ],
             "size": 50,
             "query": {
-                "function_score": {
-                    "query": {
-                        "bool": {
-                            "should": [
-                                {
-                                    "nested": {
-                                        "path": "product_name",
-                                        "query": {
-                                            "match": {
-                                                "product_name.name": {
-                                                    "query": search_term,
-                                                    "boost": 1
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "nested": {
-                                        "path": "brand",
-                                        "query": {
-                                            "match": {
-                                                "brand.name": {
-                                                    "query": search_term,
-                                                    "boost": 1
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
+                "bool": {
+                    "should": [
+                        {
+                            "nested": {
+                                "path": "product_name",
+                                "query": {
                                     "match": {
-                                        "variety_name": {
+                                        "product_name.name": {
                                             "query": search_term,
-                                            "boost": 1
                                         }
                                     }
-                                },
-                                {
-                                    "nested": {
-                                        "path": "measure_unit",
-                                        "query": {
-                                            "match": {
-                                                "measure_unit.name": {
-                                                    "query": search_term,
-                                                    "boost": 1
-                                                }
-                                            }
+                                }
+                            }
+                        },
+                        {
+                            "nested": {
+                                "path": "brand",
+                                "query": {
+                                    "match": {
+                                        "brand.name": {
+                                            "query": search_term,
                                         }
                                     }
-                                },
-                            ]
-                        }
-                    },
+                                }
+                            }
+                        },
+                        {
+                            "match": {
+                                "variety_name": {
+                                    "query": search_term,
+                                }
+                            }
+                        },
+                        {
+                            "nested": {
+                                "path": "measure_unit",
+                                "query": {
+                                    "match": {
+                                        "measure_unit.name": {
+                                            "query": search_term,
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                    ]
                 }
             }
         }
