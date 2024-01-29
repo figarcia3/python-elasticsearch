@@ -8,7 +8,7 @@ def products_query_test(search_term):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         return {
-            "min_score": 3,
+            "min_score": 5,
             "query": {
                 "bool": {
                     "should": [
@@ -19,6 +19,7 @@ def products_query_test(search_term):
                                     "match": {
                                         "product_name.name": {
                                             "query": search_term,
+                                            "boost": 2
                                         }
                                     }
                                 }
@@ -31,6 +32,7 @@ def products_query_test(search_term):
                                     "match": {
                                         "brand.name": {
                                             "query": search_term,
+                                            "boost": 3
                                         }
                                     }
                                 }
@@ -79,7 +81,7 @@ def products_query_test(search_term):
 
     else:
         return {
-            "min_score": 3,
+            "min_score": 5,
             "query": {
                 "bool": {
                     "should": [
@@ -90,6 +92,7 @@ def products_query_test(search_term):
                                     "match": {
                                         "product_name.name": {
                                             "query": search_term,
+                                            "boost": 2
                                         }
                                     }
                                 }
@@ -102,6 +105,7 @@ def products_query_test(search_term):
                                     "match": {
                                         "brand.name": {
                                             "query": search_term,
+                                            "boost": 3
                                         }
                                     }
                                 }
@@ -297,6 +301,7 @@ def products_query(search_term):
                                     "match": {
                                         "product_name.name": {
                                             "query": search_term,
+                                            "boost": 2
                                         }
                                     }
                                 }
@@ -309,6 +314,7 @@ def products_query(search_term):
                                     "match": {
                                         "brand.name": {
                                             "query": search_term,
+                                            "boost": 3
                                         }
                                     }
                                 }
@@ -1221,7 +1227,7 @@ def products_query_weight_test(search_term):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         return {
-            "min_score": 3,
+            "min_score": 5,
             "query": {
                 "bool": {
                     "should": [
@@ -1232,6 +1238,7 @@ def products_query_weight_test(search_term):
                                     "match": {
                                         "product_name.name": {
                                             "query": search_term,
+                                            "boost": 2
                                         }
                                     }
                                 }
@@ -1244,6 +1251,7 @@ def products_query_weight_test(search_term):
                                     "match": {
                                         "brand.name": {
                                             "query": search_term,
+                                            "boost": 3
                                         }
                                     }
                                 }
@@ -1292,7 +1300,7 @@ def products_query_weight_test(search_term):
 
     else:
         return {
-            "min_score": 3,
+            "min_score": 5,
             "query": {
                 "bool": {
                     "should": [
@@ -1303,6 +1311,7 @@ def products_query_weight_test(search_term):
                                     "match": {
                                         "product_name.name": {
                                             "query": search_term,
+                                            "boost": 2
                                         }
                                     }
                                 }
@@ -1315,6 +1324,7 @@ def products_query_weight_test(search_term):
                                     "match": {
                                         "brand.name": {
                                             "query": search_term,
+                                            "boost": 3
                                         }
                                     }
                                 }
@@ -1346,7 +1356,7 @@ def products_query_weight_test(search_term):
                                 "path": "product_class",
                                 "query": {
                                     "terms": {
-                                    "product_class.id": ["V", "W"]
+                                        "product_class.id": ["V", "W"]
                                     }
                                 }
                             }
