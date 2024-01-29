@@ -60,12 +60,12 @@ def products_query_test(search_term):
                             }
                         }
                     ],
-                    "should": [
+                    "must": [
                         {
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "match": {
+                                    "term": {
                                         "product_class.id": {
                                             "query": "U",
                                         }
@@ -77,7 +77,7 @@ def products_query_test(search_term):
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "match": {
+                                    "term": {
                                         "product_class.id": {
                                             "query": "C",
                                         }
@@ -139,12 +139,12 @@ def products_query_test(search_term):
                             }
                         }
                     ],
-                    "should": [
+                    "must": [
                         {
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "match": {
+                                    "term": {
                                         "product_class.id": {
                                             "query": "U",
                                         }
@@ -156,7 +156,7 @@ def products_query_test(search_term):
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "match": {
+                                    "term": {
                                         "product_class.id": {
                                             "query": "C",
                                         }
@@ -1299,12 +1299,12 @@ def products_query_weight_test(search_term):
                             }
                         }
                     ],
-                    "should": [
+                    "must": [
                         {
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "match": {
+                                    "term": {
                                         "product_class.id": {
                                             "query": "V",
                                         }
@@ -1316,7 +1316,7 @@ def products_query_weight_test(search_term):
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "match": {
+                                    "term": {
                                         "product_class.id": {
                                             "query": "W",
                                         }
@@ -1378,12 +1378,12 @@ def products_query_weight_test(search_term):
                             }
                         }
                     ],
-                    "should": [
+                    "must": [
                         {
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "match": {
+                                    "term": {
                                         "product_class.id": {
                                             "query": "V",
                                         }
@@ -1395,7 +1395,7 @@ def products_query_weight_test(search_term):
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "match": {
+                                    "term": {
                                         "product_class.id": {
                                             "query": "W",
                                         }
