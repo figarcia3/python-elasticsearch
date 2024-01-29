@@ -1251,10 +1251,20 @@ def query_products_test_4(search_term):
 def query_products_test_5(search_term):
     return {
         "size": 50,
+        "min_score": 0.4,
         "query": {
-            "combined_fields" : {
-                "query": search_term,
-                "fields": ["product_name.name", "brand.name", "variety_name"],
+             "function_score" : {
+                "combined_fields" : {
+                    "query": search_term,
+                    "fields": ["product_name.name", "brand.name", "variety_name"],
+                },
+                "functions": [
+                    {
+                        "script_score": {
+                            "script": "return _score / max_score;"
+                        }
+                    }
+                ]
             }
         }
     }
