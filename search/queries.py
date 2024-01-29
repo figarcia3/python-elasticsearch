@@ -1106,7 +1106,7 @@ def query_products_test_2(search_term):
                     "query": search_term,
                     "fields": ["product_name.name", "brand.name^2", "variety_name"],
                     "type": "cross_fields",
-                    "minimum_should_match": "100%"
+                    "minimum_should_match": "90%"
                 }
             },
             {
