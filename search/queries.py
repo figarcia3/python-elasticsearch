@@ -1250,17 +1250,7 @@ def query_products_test_4(search_term):
 
 def query_products_test_5(search_term):
     return {
-        "sort": [
-            {
-                "product_class.id": {
-                    "order": "desc",
-                    "nested": {
-                        "path": "product_class"
-                    }
-                }
-            },
-            "_score"
-        ],
+        "size": 50,
         "query": {
             "combined_fields" : {
                 "query": search_term,
