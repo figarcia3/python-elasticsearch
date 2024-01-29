@@ -1253,18 +1253,16 @@ def query_products_test_5(search_term):
         "size": 50,
         "min_score": 0.4,
         "query": {
-             "function_score" : {
-                "combined_fields" : {
-                    "query": search_term,
-                    "fields": ["product_name.name", "brand.name", "variety_name"],
+             "script_score" : {
+                "query": {
+                    "combined_fields" : {
+                        "query": search_term,
+                        "fields": ["product_name.name", "brand.name", "variety_name"],
+                    },
                 },
-                "functions": [
-                    {
-                        "script_score": {
-                            "script": "return _score / max_score;"
-                        }
-                    }
-                ]
+                "script": {
+                    "source": "return _score / max_score;"
+                }
             }
         }
     }
