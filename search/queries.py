@@ -1102,38 +1102,38 @@ def query_products_test_2(search_term):
         "bool": {
         "should": [
             {
-            "multi_match": {
-                "query": search_term,
-                "fields": ["product_name.name^2", "brand.name^3", "variety_name"],
-                "type": "cross_fields",
-                "minimum_should_match": "50%"
-            }
-            },
-            {
-            "nested": {
-                "path": "product_name",
-                "query": {
                 "multi_match": {
                     "query": search_term,
-                    "fields": ["product_name.name^2", "brand.name^3", "variety_name"],
+                    "fields": ["product_name.name", "brand.name^2", "variety_name"],
                     "type": "cross_fields",
                     "minimum_should_match": "50%"
                 }
-                },
-            }
             },
             {
-            "nested": {
-                "path": "brand",
-                "query": {
-                "multi_match": {
-                    "query": search_term,
-                    "fields": ["product_name.name^2", "brand.name^3", "variety_name"],
-                    "type": "cross_fields",
-                    "minimum_should_match": "50%"
+                "nested": {
+                    "path": "product_name",
+                    "query": {
+                    "multi_match": {
+                        "query": search_term,
+                        "fields": ["product_name.name", "brand.name^2", "variety_name"],
+                        "type": "cross_fields",
+                        "minimum_should_match": "50%"
+                    }
+                    },
                 }
-                },
-            }
+            },
+            {
+                "nested": {
+                    "path": "brand",
+                    "query": {
+                        "multi_match": {
+                            "query": search_term,
+                            "fields": ["product_name.name", "brand.name^2", "variety_name"],
+                            "type": "cross_fields",
+                            "minimum_should_match": "50%"
+                        }
+                    },
+                }
             }
         ],
         "minimum_should_match": 1
