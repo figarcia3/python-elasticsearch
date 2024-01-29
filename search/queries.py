@@ -90,17 +90,17 @@ def products_query_test(search_term):
         return {
             "min_score": 7,
             "size": 100,
-            "sort": [
-                {
-                    "product_class.id": {
-                        "order": "desc",
-                        "nested": {
-                            "path": "product_class"
-                        }
-                    }
-                },
-                "_score"
-            ],
+            # "sort": [
+            #     {
+            #         "product_class.id": {
+            #             "order": "desc",
+            #             "nested": {
+            #                 "path": "product_class"
+            #             }
+            #         }
+            #     },
+            #     "_score"
+            # ],
             "query": {
                 "function_score": {
                     "query": {
@@ -113,7 +113,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "product_name.name": {
                                                     "query": search_term,
-                                                    "boost": 2
+                                                    "boost": 1
                                                 }
                                             }
                                         }
@@ -126,7 +126,7 @@ def products_query_test(search_term):
                                             "match": {
                                                 "brand.name": {
                                                     "query": search_term,
-                                                    "boost": 3
+                                                    "boost": 1
                                                 }
                                             }
                                         }
@@ -543,20 +543,20 @@ def store_products_query_test(search_term, store):
             query_stores = {
                 "size": 50,
                 "min_score": 15,
-                "sort": [
-                    {
-                        "product.product_class.id": {
-                            "order": "desc",
-                            "nested": {
-                                "path": "product.product_class",
-                                "nested": {
-                                    "path": "product"
-                                }
-                            }
-                        }
-                    },
-                    "_score"
-                ],
+                # "sort": [
+                #     {
+                #         "product.product_class.id": {
+                #             "order": "desc",
+                #             "nested": {
+                #                 "path": "product.product_class",
+                #                 "nested": {
+                #                     "path": "product"
+                #                 }
+                #             }
+                #         }
+                #     },
+                #     "_score"
+                # ],
                 "query": {
                     "function_score": {
                         "query": {
@@ -577,7 +577,7 @@ def store_products_query_test(search_term, store):
                                                         "match": {
                                                             "product.product_name.name": {
                                                                 "query": search_term,
-                                                                "boost": 2
+                                                                "boost": 1
                                                             }
                                                         }
                                                     }
@@ -595,7 +595,7 @@ def store_products_query_test(search_term, store):
                                                         "match": {
                                                             "product.brand.name": {
                                                                 "query": search_term,
-                                                                "boost": 3
+                                                                "boost": 1
                                                             }
                                                         }
                                                     }
@@ -640,7 +640,7 @@ def store_products_query_test(search_term, store):
                                                 "match": {
                                                     "product.create_description": {
                                                         "query": search_term,
-                                                        "boost": 2
+                                                        "boost": 1
                                                     }
                                                 }
                                             }
@@ -1087,17 +1087,17 @@ def numeric_store_products_query(eanid, store):
 def query_products_test_2(search_term):
     return {
     "size": 50,
-    "sort": [
-        {
-            "product_class.id": {
-                "order": "desc",
-                "nested": {
-                    "path": "product_class"
-                }
-            }
-        },
-        "_score"
-    ],
+    # "sort": [
+    #     {
+    #         "product_class.id": {
+    #             "order": "desc",
+    #             "nested": {
+    #                 "path": "product_class"
+    #             }
+    #         }
+    #     },
+    #     "_score"
+    # ],
     "query": {
         "bool": {
             "should": [
@@ -1250,19 +1250,10 @@ def query_products_test_4(search_term):
 
 def query_products_test_5(search_term):
     return {
-        "size": 50,
-        "min_score": 0.4,
         "query": {
-             "script_score" : {
-                "query": {
-                    "combined_fields" : {
-                        "query": search_term,
-                        "fields": ["product_name.name", "brand.name", "variety_name"],
-                    },
-                },
-                "script": {
-                    "source": "return _score / max_score;"
-                }
-            }
-        }
+            "combined_fields" : {
+                "query": search_term,
+                "fields": ["product_name.name", "brand.name", "variety_name"],
+            },
+        },
     }

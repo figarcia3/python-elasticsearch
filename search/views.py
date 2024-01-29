@@ -137,10 +137,10 @@ class MultiSearchView(View):
         store = self.request.GET.get('store')
 
         # query_products = products_query(search_term)
-        # query_products = products_query_test(search_term)
+        query_products = products_query_test(search_term)
         # query_products = query_products_test_2(search_term)
         # query_products = query_products_test_4(search_term)
-        query_products = query_products_test_5(search_term)
+        # query_products = query_products_test_5(search_term)
         # query_products = query_products_test_3(search_term)
         # query_stores = store_products_query(search_term, store)
         query_stores = store_products_query_test(search_term, store)
