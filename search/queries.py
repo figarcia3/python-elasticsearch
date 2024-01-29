@@ -1250,7 +1250,6 @@ def query_products_test_4(search_term):
 
 def query_products_test_5(search_term):
     return {
-        "size": 50,
         "sort": [
             {
                 "product_class.id": {
