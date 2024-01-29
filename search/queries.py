@@ -60,7 +60,7 @@ def products_query_test(search_term):
                             }
                         }
                     ],
-                    "must": [
+                    "filter": [
                         {
                             "nested": {
                             "path": "product_class",
@@ -125,7 +125,7 @@ def products_query_test(search_term):
                             }
                         }
                     ],
-                    "must": [
+                    "filter": [
                         {
                             "nested": {
                             "path": "product_class",
@@ -1271,7 +1271,7 @@ def products_query_weight_test(search_term):
                             }
                         }
                     ],
-                    "must": [
+                    "filter": [
                         {
                             "nested": {
                             "path": "product_class",
@@ -1336,7 +1336,7 @@ def products_query_weight_test(search_term):
                             }
                         }
                     ],
-                    "must": [
+                    "filter": [
                         {
                             "nested": {
                                 "path": "product_class",
