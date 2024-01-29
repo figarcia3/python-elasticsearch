@@ -1100,44 +1100,44 @@ def query_products_test_2(search_term):
     ],
     "query": {
         "bool": {
-        "should": [
-            {
-                "multi_match": {
-                    "query": search_term,
-                    "fields": ["product_name.name", "brand.name^2", "variety_name"],
-                    "type": "cross_fields",
-                    "minimum_should_match": "90%"
-                }
-            },
-            {
-                "nested": {
-                    "path": "product_name",
-                    "query": {
+            "should": [
+                {
                     "multi_match": {
-                            "query": search_term,
-                            "fields": ["product_name.name", "brand.name^2", "variety_name"],
-                            "type": "cross_fields",
-                            "minimum_should_match": "100%"
-                        }
-                    },
-                }
-            },
-            {
-                "nested": {
-                    "path": "brand",
-                    "query": {
+                        "query": search_term,
+                        "fields": ["product_name.name", "brand.name^2", "variety_name"],
+                        "type": "cross_fields",
+                        "minimum_should_match": "-2"
+                    }
+                },
+                {
+                    "nested": {
+                        "path": "product_name",
+                        "query": {
                         "multi_match": {
-                            "query": search_term,
-                            "fields": ["product_name.name", "brand.name^2", "variety_name"],
-                            "type": "cross_fields",
-                            "minimum_should_match": "100%"
-                        }
-                    },
+                                "query": search_term,
+                                "fields": ["product_name.name", "brand.name^2", "variety_name"],
+                                "type": "cross_fields",
+                                "minimum_should_match": "3"
+                            }
+                        },
+                    }
+                },
+                {
+                    "nested": {
+                        "path": "brand",
+                        "query": {
+                            "multi_match": {
+                                "query": search_term,
+                                "fields": ["product_name.name", "brand.name^2", "variety_name"],
+                                "type": "cross_fields",
+                                "minimum_should_match": "3"
+                            }
+                        },
+                    }
                 }
+            ],
+            "minimum_should_match": 1
             }
-        ],
-        "minimum_should_match": 1
-        }
     }
     }
 
@@ -1181,7 +1181,7 @@ def query_products_test_3(search_term):
                     }
                 },
                 {
-                    "query_string": {  
+                    "query_string": {
                         "default_field": "variety_name",
                         "query": f"*{search_term}*"
                     }
