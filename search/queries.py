@@ -1296,7 +1296,9 @@ def products_query_weight_test(search_term):
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "term": "V"
+                                    "term": {
+                                        "product_class.id": "V"
+                                    }
                                 }
                             }
                         },
@@ -1304,7 +1306,9 @@ def products_query_weight_test(search_term):
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "term": "W"
+                                    "term": {
+                                        "product_class.id": "W"
+                                    }
                                 }
                             }
                         }
@@ -1367,7 +1371,9 @@ def products_query_weight_test(search_term):
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "term": "V"
+                                    "term": {
+                                        "product_class.id": "V"
+                                    }
                                 }
                             }
                         },
@@ -1375,7 +1381,9 @@ def products_query_weight_test(search_term):
                             "nested": {
                                 "path": "product_class",
                                 "query": {
-                                    "term": "W"
+                                    "term": {
+                                        "product_class.id": "W"
+                                    }
                                 }
                             }
                         }
