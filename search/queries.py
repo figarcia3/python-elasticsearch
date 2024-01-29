@@ -1216,6 +1216,7 @@ def query_products_test_4(search_term):
                                     "match": {
                                         "product_name.name": {
                                             "query": search_term,
+                                            "boost": 1
                                         }
                                     }
                                 }
@@ -1228,6 +1229,7 @@ def query_products_test_4(search_term):
                                     "match": {
                                         "brand.name": {
                                             "query": search_term,
+                                            "boost": 1
                                         }
                                     }
                                 }
@@ -1237,22 +1239,35 @@ def query_products_test_4(search_term):
                             "match": {
                                 "variety_name": {
                                     "query": search_term,
+                                    "boost": 1
                                 }
                             }
                         },
-                        {
-                            "nested": {
-                                "path": "measure_unit",
-                                "query": {
-                                    "match": {
-                                        "measure_unit.name": {
-                                            "query": search_term,
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                    ]
+                    ],
                 }
             }
         }
+
+def query_products_test_5(search_term):
+    return {
+    "size": 50,
+    "sort": [
+        {
+            "product_class.id": {
+                "order": "desc",
+                "nested": {
+                    "path": "product_class"
+                }
+            }
+        },
+        "_score"
+    ],
+    "query": {
+            {
+                "multi_match": {
+                    "query": search_term,
+                    "fields": ["product_name.name", "brand.name", "variety_name"],
+                }
+            },
+        }
+    }
