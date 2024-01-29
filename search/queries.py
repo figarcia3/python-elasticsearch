@@ -1262,25 +1262,10 @@ def query_products_test_5(search_term):
     #     },
     #     "_score"
     # ],
-    "query": {
-            "dis_max": {
-                "queries": [
-                        {
-                            "multi_match": {
-                                "query": search_term,
-                                "fields": ["product_name.name", "brand.name", "variety_name"],
-                                "type": "cross_fields",
-                                "minimum_should_match": "50%",
-                            }
-                        },
-                        {
-                            "multi_match" : {
-                                "query":      search_term,
-                                "type":       "cross_fields",
-                                "fields":     [ "*.edge" ]
-                            }
-                        }
-                    ]
+        "query": {
+                "combined_fields" : {
+                    "query": search_term,
+                    "fields": ["product_name.name", "brand.name", "variety_name"],
+                }
             }
-        }
     }
