@@ -1140,3 +1140,54 @@ def query_products_test_2(search_term):
         }
     }
     }
+
+def query_products_test_3(search_term):
+     return {
+        "size": 50,
+        "sort": [
+        {
+            "product_class.id": {
+                "order": "desc",
+                "nested": {
+                    "path": "product_class"
+                }
+            }
+        },
+        "_score"
+        ],
+        "query": {
+            "bool": {
+            "should": [
+                {
+                    "nested": {
+                        "path": "product_name",
+                        "query": {
+                            "query_string":{  
+                                "default_field": "product_name.name",
+                                "query": f"*{search_term}*"
+                            }
+                        },
+                    }
+                },
+                {
+                    "nested": {
+                        "path": "brand",
+                        "query": {
+                            "query_string":{  
+                                "default_field": "brand.name",
+                                "query": f"*{search_term}*"
+                            }
+                        },
+                    }
+                },
+                {
+                    "query_string": {  
+                        "default_field": "variety_name",
+                        "query": f"*{search_term}*"
+                    }
+                },
+            ],
+            "minimum_should_match": 1
+            }
+        }
+    }
