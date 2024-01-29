@@ -128,9 +128,8 @@ desodorante, antiranspirante
 alimento perros, comida para perros, pelet, pienso
 yogurt, yogour, yogur, yogourt, yogurt
 dona, donuts, donut
-pilas, d+
-pilas, triple a
-pilas, doble a
+AAA, triple a
+AA, doble a
 te, blackcurrant, grosellas, infusion
 chicle, goma de mascar, goma de masticar
 champinones, seta, xampinyo, champignon
