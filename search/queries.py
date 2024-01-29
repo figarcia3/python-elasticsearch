@@ -8,8 +8,8 @@ def products_query_test(search_term):
     if len(measure_unit_list) > 0:
         measure_unit = Decimal(measure_unit_list[0])
         return {
-            "min_score": 7,
-            "size": 100,
+            "min_score": 5,
+            "size": 50,
             "sort": [
                 {
                     "product_class.id": {
@@ -88,8 +88,8 @@ def products_query_test(search_term):
 
     else:
         return {
-            "min_score": 7,
-            "size": 100,
+            "min_score": 5,
+            "size": 50,
             # "sort": [
             #     {
             #         "product_class.id": {
@@ -418,7 +418,7 @@ def store_products_query_test(search_term, store):
         measure_unit = Decimal(measure_unit_list[0])
         query_stores = {
             "size": 50,
-            "min_score": 15,
+            "min_score": 5,
             "sort": [
                 {
                     "product.product_class.id": {
@@ -453,7 +453,7 @@ def store_products_query_test(search_term, store):
                                                     "match": {
                                                         "product.product_name.name": {
                                                             "query": search_term,
-                                                            "boost": 2
+                                                            "boost": 1
                                                         }
                                                     }
                                                 }
@@ -471,7 +471,7 @@ def store_products_query_test(search_term, store):
                                                     "match": {
                                                         "product.brand.name": {
                                                             "query": search_term,
-                                                            "boost": 3
+                                                            "boost": 1
                                                         }
                                                     }
                                                 }
@@ -514,7 +514,8 @@ def store_products_query_test(search_term, store):
                                         "path": "product",
                                         "query": {
                                             "term": {
-                                                "product.quantity": measure_unit
+                                                "product.quantity": measure_unit,
+                                                "boost": 1
                                             }
                                         }
                                     }
@@ -526,7 +527,7 @@ def store_products_query_test(search_term, store):
                                             "match": {
                                                 "product.create_description": {
                                                     "query": search_term,
-                                                    "boost": 2
+                                                    "boost": 1
                                                 }
                                             }
                                         }
@@ -542,7 +543,7 @@ def store_products_query_test(search_term, store):
     else:
             query_stores = {
                 "size": 50,
-                "min_score": 15,
+                "min_score": 5,
                 # "sort": [
                 #     {
                 #         "product.product_class.id": {
