@@ -8,7 +8,7 @@ from devtools import debug
 
 from elasticsearch import Elasticsearch, RequestError
 from elasticsearch.helpers import bulk
-from search.queries import numeric_products_query, numeric_store_products_query, products_query_test, products_query_weight_test, store_products_query_test
+from search.queries import numeric_products_query, numeric_store_products_query, products_query, products_query_test, store_products_query, store_products_query_test
 
 from search.utils import auth_decorator, build_doc, extract_number_token_from_query, transform_json_list
 
@@ -140,25 +140,18 @@ class MultiSearchView(View):
         query_products = products_query_test(search_term)
         # query_stores = store_products_query(search_term, store)
         query_stores = store_products_query_test(search_term, store)
-
-        documents_products = []
-
         if search_term.isnumeric():
             query_products = numeric_products_query(search_term)
             query_stores = numeric_store_products_query(search_term, store)
-        else:
-            query_products_weight = products_query_weight_test(search_term)
-            response_weight = es.search(index='products', body=query_products_weight)
-            for hit in response_weight["hits"]["hits"]:
-                documents_products.append(hit["_source"])
 
         response = es.search(index='products', body=query_products)
 
+        documents_products = []
         for hit in response["hits"]["hits"]:
             documents_products.append(hit["_source"])
+
         
         response_store = es.search(index='store_products', body=query_stores)
-
         documents_store_products = []
 
         for hit in response_store["hits"]["hits"]:

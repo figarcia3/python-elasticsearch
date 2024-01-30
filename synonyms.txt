@@ -13,6 +13,7 @@ cigarrillos, pucho, cigarro, cigarros
 palta, paltas, aguacates, aguacate, abacate, avocato
 pepino ensalada, pepinos
 muffin, mafin, mufin
+zapallo, zapallos
 cebolla, cebollas
 palmeras, palmeritas, palmera, palmerita
 dobladitas, dobladita
@@ -29,7 +30,7 @@ kiwi, kiwis
 frutillas, frutilla
 bebida, gaseosa, soda, refresco
 pie, pai, pay
-donas, donuts, donut, donut's
+donas, donuts, donut
 champinones, champinon
 pimenton, pimentones
 helado, sorbete
@@ -127,8 +128,9 @@ desodorante, antiranspirante
 alimento perros, comida para perros, pelet, pienso
 yogurt, yogour, yogur, yogourt, yogurt
 dona, donuts, donut
-AAA, triple a
-AA, doble a
+pilas, d+
+pilas, triple a
+pilas, doble a
 te, blackcurrant, grosellas, infusion
 chicle, goma de mascar, goma de masticar
 champinones, seta, xampinyo, champignon
